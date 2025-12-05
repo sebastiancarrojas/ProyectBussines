@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\SebasCR\\PersonaProyect\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\sebascr\\personaproyect\\personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\sebascr\\personaproyect\\personalproyect\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\sebascr\\personaproyect\\personalproyect\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\sebascr\\personaproyect\\personalproyect\\controllers\\admincontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\admincontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductDTO.cs",
+              "DocumentMoniker": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\DTOs\\ProductDTO.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\DTOs\\ProductDTO.cs",
+              "ToolTip": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\DTOs\\ProductDTO.cs",
+              "RelativeToolTip": "PersonalProyect\\DTOs\\ProductDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T16:32:26.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminController1.cs",
+              "DocumentMoniker": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Controllers\\AdminController1.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\AdminController1.cs",
+              "ToolTip": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Controllers\\AdminController1.cs",
+              "RelativeToolTip": "PersonalProyect\\Controllers\\AdminController1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T16:16:10.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "PersonalProyect\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T16:10:21.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\SebasCR\\PersonaProyect\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T16:07:31.122Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
