@@ -38,7 +38,7 @@ namespace PersonalProyect.Controllers.Api
 
         // CREATE
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] ProductDTO dto)
+        public async Task<IActionResult> Create([FromForm] ProductDTO dto)
         {
             Response<ProductDTO> response = await _productService.CreateAsync(dto);
             return ControllerBasicValidation(response, ModelState);
@@ -46,7 +46,7 @@ namespace PersonalProyect.Controllers.Api
 
         // UPDATE
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ProductDTO dto)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromForm] ProductDTO dto)
         {
             Response<ProductDTO> response = await _productService.UpdateAsync(id, dto);
             return ControllerBasicValidation(response, ModelState);

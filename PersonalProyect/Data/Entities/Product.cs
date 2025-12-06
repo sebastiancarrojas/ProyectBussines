@@ -13,9 +13,11 @@ namespace PersonalProyect.Data.Entities
     public string? Status { get; set; }
     public DateTime Created { get; set; } = DateTime.Now;
     public string? Code { get; set; }
+    public string? ImageUrl { get; set; }
 
-    // Relationships
-    public List<SaleDetail> SalesDetails { get; set; } = new();
+
+        // Relationships
+        public List<SaleDetail> SalesDetails { get; set; } = new();
 
     }
 }

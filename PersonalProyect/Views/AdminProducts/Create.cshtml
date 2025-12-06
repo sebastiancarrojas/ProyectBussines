@@ -1,0 +1,47 @@
+﻿@model PersonalProyect.DTOs.ProductDTO
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Nuevo Producto";
+}
+
+<h2>Crear Producto</h2>
+
+<form asp-action="Create" asp-controller="AdminProducts" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <div class="mb-3">
+        <label>Descripción</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Precio</label>
+        <input class="form-control" asp-for="Price" type="number" step="0.01" />
+    </div>
+
+    <div class="mb-3">
+        <label>Código</label>
+        <input class="form-control" asp-for="Code" />
+    </div>
+
+    <div class="mb-3">
+        <label>Estado</label>
+        <select class="form-select" asp-for="Status">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select>
+    </div>
+
+    <!-- Campo para subir imagen -->
+    <div class="mb-3">
+        <label>Imagen del producto</label>
+        <input class="form-control" type="file" asp-for="ImageFile" />
+    </div>
+
+    <button class="btn btn-primary">Guardar</button>
+    <a href="/AdminProducts" class="btn btn-secondary">Cancelar</a>
+</form>

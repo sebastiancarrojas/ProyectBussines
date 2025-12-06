@@ -14,6 +14,13 @@ namespace PersonalProyect.DTOs
         public DateTime Created { get; set; } = DateTime.Now;
         public string? Code { get; set; }
 
+        // Archivo recibido desde el formulario
+        public IFormFile? ImageFile { get; set; }
+
+        // Ruta guardada y enviada a la BD
+        public string? ImageUrl { get; set; }
+
+
         // Relationships
         public List<SaleDetail> SalesDetails { get; set; } = new();
     }

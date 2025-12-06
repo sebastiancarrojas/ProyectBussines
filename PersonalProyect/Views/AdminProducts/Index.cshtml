@@ -1,0 +1,45 @@
+﻿@model List<PersonalProyect.DTOs.ProductDTO>
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Productos";
+}
+
+<div class="d-flex justify-content-between mb-4">
+    <h2>Productos</h2>
+    <a class="btn btn-primary" href="/AdminProducts/Create">
+        <i class="bi bi-plus-circle"></i> Nuevo Producto
+    </a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var p in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(p.ImageUrl))
+                {
+                    <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name" style="height:200px; object-fit:cover;">
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <p class="card-text">@p.Description</p>
+                    <p class="card-text"><strong>Precio:</strong> $@p.Price</p>
+                    <p class="card-text"><strong>Código:</strong> @p.Code</p>
+                    <p class="card-text"><strong>Estado:</strong> @p.Status</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="/AdminProducts/Edit/@p.Id" class="btn btn-sm btn-warning">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href="/AdminProducts/Delete/@p.Id"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('¿Seguro que deseas eliminar este producto?');">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

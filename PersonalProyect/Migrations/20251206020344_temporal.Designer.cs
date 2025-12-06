@@ -12,8 +12,8 @@ using PersonalProyect.Data;
 namespace PersonalProyect.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251205124609_DataInitial")]
-    partial class DataInitial
+    [Migration("20251206020344_temporal")]
+    partial class temporal
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

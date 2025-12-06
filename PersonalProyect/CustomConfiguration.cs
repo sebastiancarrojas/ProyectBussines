@@ -20,6 +20,11 @@ namespace PersonalProyect
             builder.Services.AddScoped<ISaleDetail, SaleDetailService>();
             builder.Services.AddScoped<ISaleService, SaleService>();
             builder.Services.AddScoped<IPaymentService, PaymentService>();
+            builder.Services.AddHttpClient("ApiClient", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7172/"); // tu API
+            });
+
             // Agrega AutoMapper
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // Agrega controladores

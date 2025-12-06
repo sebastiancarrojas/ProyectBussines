@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PersonalProyect.Migrations
 {
     /// <inheritdoc />
-    public partial class DataInitial : Migration
+    public partial class temporal : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
