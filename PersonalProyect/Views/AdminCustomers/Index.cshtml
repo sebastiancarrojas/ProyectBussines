@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Productos";
+}
+@model List<PersonalProyect.DTOs.CustomerDTO>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="card shadow-sm mt-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Clientes</h4>
+        <a asp-action="Create" class="btn btn-light btn-sm">
+            <i class="bi bi-plus-circle"></i> Nuevo Cliente
+        </a>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-hover table-bordered">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Apodo</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Fecha Registro</th>
+                    <th style="width:140px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var customer in Model)
+                    {
+                        <tr>
+                            <td>@customer.FullName</td>
+                            <td>@customer.NickName</td>
+                            <td>@customer.PhoneNumber</td>
+                            <td>@customer.Email</td>
+                            <td>@customer.RegistrationDate.ToString("yyyy-MM-dd")</td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-sm btn-danger"
+                                   onclick="return confirm('¿Seguro de eliminar este cliente?')">
+                                    <i class="bi bi-trash3"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="text-center">
+                        <td colspan="6">No hay clientes registrados</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

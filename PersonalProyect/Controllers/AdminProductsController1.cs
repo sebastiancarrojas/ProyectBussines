@@ -1,23 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Core;
+using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
+using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class AdminProductsController : Controller
 {
     // Inyectar dependencia IHttpClientFactory
     private readonly HttpClient _http;
+    private readonly DataContext _context;
 
-    public AdminProductsController(IHttpClientFactory httpFactory)
+    public AdminProductsController(IHttpClientFactory httpFactory, DataContext context)
     {
         _http = httpFactory.CreateClient("ApiClient");
+        _context = context;
     }
 
     // Pide a la API todos los productos y los muestra en la vista Index
     public async Task<IActionResult> Index()
     {
         var response = await _http.GetFromJsonAsync<Response<List<ProductDTO>>>("api/Product");
+        ViewBag.ShowCreateButton = true;
         return View(response?.Result);
     }
 
@@ -48,7 +55,6 @@ public class AdminProductsController : Controller
         }
 
         var response = await _http.PostAsync("api/Product", content);
-      // var responseContent = await response.Content.ReadFromJsonAsync<Response<ProductDTO>>();
 
         return RedirectToAction("Index", "AdminProducts");
 
@@ -82,3 +88,5 @@ public class AdminProductsController : Controller
         return RedirectToAction("Index");
     }
 }
+
+    

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using PersonalProyect.Data;
+using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Core;
-using PersonalProyect.DTOs;
+using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
+using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
 
 namespace PersonalProyect.Services.Implementations
@@ -75,6 +76,30 @@ namespace PersonalProyect.Services.Implementations
         public async Task<Response<List<ProductDTO>>> GetCompleteListAsync()
         {
             return await GetCompleteListAsync<Product, ProductDTO>();
+        }
+
+        // Temporal - Eliminar
+        public async Task<Response<List<ProductDTO>>> GetReservedAsync()
+        {
+            var products = await _context.Products
+                .Where(p => p.SalesDetails.Any())
+                .ToListAsync();
+
+            var dto = _mapper.Map<List<ProductDTO>>(products);
+
+            return Response<List<ProductDTO>>.Success(dto);
+        }
+
+        // Temporal - Eliminar
+        public async Task<Response<List<ProductDTO>>> GetAvailableAsync()
+        {
+            var products = await _context.Products
+                .Where(p => !p.SalesDetails.Any())
+                .ToListAsync();
+
+            var dto = _mapper.Map<List<ProductDTO>>(products);
+
+            return Response<List<ProductDTO>>.Success(dto);
         }
     }
 }

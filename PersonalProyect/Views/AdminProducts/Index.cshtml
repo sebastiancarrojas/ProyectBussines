@@ -5,12 +5,18 @@
     ViewData["Title"] = "Productos";
 }
 
+<!-- Boton Nuevo Producto -->
 <div class="d-flex justify-content-between mb-4">
     <h2>Productos</h2>
-    <a class="btn btn-primary" href="/AdminProducts/Create">
-        <i class="bi bi-plus-circle"></i> Nuevo Producto
-    </a>
+
+    @if (ViewBag.ShowCreateButton == true)
+    {
+        <a class="btn btn-primary" href="/AdminProducts/Create">
+            <i class="bi bi-plus-circle"></i> Nuevo Producto
+        </a>
+    }
 </div>
+
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var p in Model)
@@ -29,9 +35,12 @@
                     <p class="card-text"><strong>Estado:</strong> @p.Status</p>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
+                    <!-- Boton Edit -->
                     <a href="/AdminProducts/Edit/@p.Id" class="btn btn-sm btn-warning">
                         <i class="bi bi-pencil-square"></i>
                     </a>
+
+                    <!-- Boton Delete -->
                     <a href="/AdminProducts/Delete/@p.Id"
                        class="btn btn-sm btn-danger"
                        onclick="return confirm('¿Seguro que deseas eliminar este producto?');">

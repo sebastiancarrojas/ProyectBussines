@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Controllers.Api;
 using PersonalProyect.Core;
+using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
@@ -15,10 +18,14 @@ namespace PersonalProyect.Controllers.Api
     {
         // Inyectar dependencias necesarias
         private readonly IProductService _productService;
+        private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, DataContext context, IMapper mapper)
         {
             _productService = productService;
+            _context = context;
+            _mapper = mapper;
         }
 
         // GET 
@@ -46,7 +53,7 @@ namespace PersonalProyect.Controllers.Api
 
         // UPDATE
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromForm] ProductDTO dto)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ProductDTO dto)
         {
             Response<ProductDTO> response = await _productService.UpdateAsync(id, dto);
             return ControllerBasicValidation(response, ModelState);
@@ -59,6 +66,5 @@ namespace PersonalProyect.Controllers.Api
             Response<object> response = await _productService.DeleteAsync(id);
             return ControllerBasicValidation(response, ModelState);
         }
-
     }
 }
