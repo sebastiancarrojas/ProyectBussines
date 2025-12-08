@@ -99,23 +99,23 @@
     </style>
 </head>
 <body>
-    <nav class="navbar bg-light border-bottom">
+   <!-- <nav class="navbar bg-light border-bottom">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">Register</a>
             <ul class="nav">
                 <li class="nav-item"><a class="nav-link text-secondary" asp-controller="Home" asp-action="Index">Home</a></li>
             </ul>
         </div>
-    </nav>
+     </nav> -->
 
     <div class="card register-card p-4">
         <div class="card-body text-center">
             <h4 class="fw-bold">Crear cuenta</h4>
-            <p class="text-muted">Crea tu cuenta y empieza a viajar con nosotros</p>
+            <!-- <p class="text-muted">Crea tu cuenta</p> -->
 
             <form asp-action="Signup" method="POST">
                 <div class="mb-3">
-                    <input asp-for="FullName" type="text" class="form-control" placeholder="Nombres" />
+                    <input asp-for="FullName" type="text" class="form-control" placeholder="Nombre completo" />
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
 
@@ -135,27 +135,27 @@
                     </div>
                 </div>
 
-                <div class="form-check mb-2 text-start">
+                <!-- <div class="form-check mb-2 text-start">
                     <input class="form-check-input" type="checkbox" id="terms" />
                     <label class="form-check-label small text-muted" for="terms">
                         Estoy de acuerdo con los <a href="#" class="fw-semibold text-decoration-none">Términos y condiciones</a> y con la
                         <a href="#" class="fw-semibold text-decoration-none">Política de privacidad</a>
                     </label>
-                </div>
+                </div> -->
 
-                <div class="form-check mb-4 text-start">
+                <!-- <div class="form-check mb-4 text-start">
                     <input class="form-check-input" type="checkbox" id="marketing" />
                     <label class="form-check-label small text-muted" for="marketing">
                         Me gustaría recibir noticias y ofertas especiales por correo.
                     </label>
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-dark w-100 rounded-pill py-2">
                     Crear cuenta →
                 </button>
 
                 <p class="mt-4 small text-muted">
-                    Ya tienes una cuenta?
+                    ¿Ya tienes una cuenta?
                     <a asp-action="Login" class="fw-semibold text-decoration-none">Ingresar</a>
                 </p>
             </form>
