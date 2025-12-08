@@ -1,0 +1,174 @@
+﻿@model PersonalProyect.DTOs.AccountUserDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    @await Html.PartialAsync("_Styles")
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .register-card {
+            max-width: 600px;
+            margin: 50px auto 0px auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .register-card::before,
+            .register-card::after {
+                content: '';
+                position: absolute;
+                background: #f1f1f1;
+                border-radius: 50%;
+                z-index: 0;
+            }
+
+            .register-card::before {
+                width: 140px;
+                height: 140px;
+                bottom: -50px;
+                left: -60px;
+            }
+
+            .register-card::after {
+                width: 160px;
+                height: 160px;
+                top: -60px;
+                right: -60px;
+            }
+
+            .register-card .card-body {
+                position: relative;
+                z-index: 2;
+            }
+
+        .form-control {
+            border-radius: 10px;
+            height: 48px;
+        }
+
+        .btn-dark {
+            background-color: #1c1b1b;
+            border: none;
+        }
+
+            .btn-dark:hover {
+                background-color: #000;
+            }
+
+        .divider {
+            text-align: center;
+            position: relative;
+        }
+
+            .divider::before,
+            .divider::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 40%;
+                height: 1px;
+                background-color: #ddd;
+            }
+
+            .divider::before {
+                left: 0;
+            }
+
+            .divider::after {
+                right: 0;
+            }
+
+        .social-btn img {
+            width: 18px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Register</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-secondary" asp-controller="Home" asp-action="Index">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card register-card p-4">
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Crear cuenta</h4>
+            <p class="text-muted">Crea tu cuenta y empieza a viajar con nosotros</p>
+
+            <form asp-action="Signup" method="POST">
+                <div class="mb-3">
+                    <input asp-for="FullName" type="text" class="form-control" placeholder="Nombres" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+
+                <div class="mb-3">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Correo" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Contraseña" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirmar contraseña" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-check mb-2 text-start">
+                    <input class="form-check-input" type="checkbox" id="terms" />
+                    <label class="form-check-label small text-muted" for="terms">
+                        Estoy de acuerdo con los <a href="#" class="fw-semibold text-decoration-none">Términos y condiciones</a> y con la
+                        <a href="#" class="fw-semibold text-decoration-none">Política de privacidad</a>
+                    </label>
+                </div>
+
+                <div class="form-check mb-4 text-start">
+                    <input class="form-check-input" type="checkbox" id="marketing" />
+                    <label class="form-check-label small text-muted" for="marketing">
+                        Me gustaría recibir noticias y ofertas especiales por correo.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100 rounded-pill py-2">
+                    Crear cuenta →
+                </button>
+
+                <p class="mt-4 small text-muted">
+                    Ya tienes una cuenta?
+                    <a asp-action="Login" class="fw-semibold text-decoration-none">Ingresar</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_Scripts")
+
+    @section Scripts {
+
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

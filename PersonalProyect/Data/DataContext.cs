@@ -1,11 +1,14 @@
 ﻿using PersonalProyect.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 
 
 namespace PersonalProyect.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         // Es el constructor que inicializa tu DataContext y le pasa a EF Core la información
         // para saber cómo conectarse a la base de datos
@@ -14,7 +17,7 @@ namespace PersonalProyect.Data
         }
 
         // Estos DbSet representan las tablas en la base de datos
-        public DbSet<Entities.Administrator> Administrators { get; set; }
+        // public DbSet<Entities.User> Users { get; set; }
         public DbSet<Entities.Customer> Customers { get; set; }
         public DbSet<Entities.Product> Products { get; set; }
         public DbSet<Entities.Sale> Sales { get; set; }
@@ -40,7 +43,7 @@ namespace PersonalProyect.Data
             // Configuraciones de claves pueden ir aquí
             modelBuilder.Entity<Product>().HasMany(b => b.SalesDetails).WithOne(p => p.Products).HasForeignKey(b => b.ProductId);
             modelBuilder.Entity<Sale>().HasMany(b => b.SalesDetails).WithOne(p => p.Sales).HasForeignKey(b => b.SaleId);
-            modelBuilder.Entity<Administrator>().HasMany(b => b.Sales).WithOne(p => p.Administrators).HasForeignKey(b => b.AdministratorId);
+            // modelBuilder.Entity<User>().HasMany(b => b.Sales).WithOne(p => p.Users).HasForeignKey(b => b.UserId);
             modelBuilder.Entity<Customer>().HasMany(b => b.Sales).WithOne(p => p.Customers).HasForeignKey(b => b.CustomerId);
             modelBuilder.Entity<Sale>().HasMany(b => b.Payments).WithOne(p => p.Sales).HasForeignKey(b => b.SaleId);
         }

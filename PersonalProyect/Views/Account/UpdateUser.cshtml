@@ -1,0 +1,147 @@
+﻿@model PersonalProyect.DTOs.AccountUserDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    @await Html.PartialAsync("_Styles")
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .register-card {
+            max-width: 600px;
+            margin: 50px auto 0px auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .register-card::before,
+            .register-card::after {
+                content: '';
+                position: absolute;
+                background: #f1f1f1;
+                border-radius: 50%;
+                z-index: 0;
+            }
+
+            .register-card::before {
+                width: 140px;
+                height: 140px;
+                bottom: -50px;
+                left: -60px;
+            }
+
+            .register-card::after {
+                width: 160px;
+                height: 160px;
+                top: -60px;
+                right: -60px;
+            }
+
+            .register-card .card-body {
+                position: relative;
+                z-index: 2;
+            }
+
+        .form-control {
+            border-radius: 10px;
+            height: 48px;
+        }
+
+        .btn-dark {
+            background-color: #1c1b1b;
+            border: none;
+        }
+
+            .btn-dark:hover {
+                background-color: #000;
+            }
+
+        .divider {
+            text-align: center;
+            position: relative;
+        }
+
+            .divider::before,
+            .divider::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 40%;
+                height: 1px;
+                background-color: #ddd;
+            }
+
+            .divider::before {
+                left: 0;
+            }
+
+            .divider::after {
+                right: 0;
+            }
+
+        .social-btn img {
+            width: 18px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Editar</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-secondary" asp-controller="Home" asp-action="Index">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card register-card p-4">
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Editar cuenta</h4>
+
+            <form asp-action="UpdateUser" method="POST" enctype='multipart/form-data'>
+
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Email" />
+
+                <div class="mb-3">
+                    <input value="@Model.Email" class="form-control" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <input asp-for="FullName" type="text" class="form-control" placeholder="Nombres" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+
+                <button type="submit" class="btn btn-dark w-100 rounded-pill py-2">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_Scripts")
+
+    @section Scripts {
+
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

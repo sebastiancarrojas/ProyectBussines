@@ -346,3 +346,12 @@ C:\Repositorios\PersonalProyect\obj\Debug\net8.0\refint\PersonalProyect.dll
 C:\Repositorios\PersonalProyect\obj\Debug\net8.0\PersonalProyect.pdb
 C:\Repositorios\PersonalProyect\obj\Debug\net8.0\PersonalProyect.genruntimeconfig.cache
 C:\Repositorios\PersonalProyect\obj\Debug\net8.0\ref\PersonalProyect.dll
+C:\Repositorios\PersonalProyect\obj\Debug\net8.0\PersonalProyect.MvcApplicationPartsAssemblyInfo.cs
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\AspNetCoreHero.ToastNotification.Views.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\AspNetCoreHero.ToastNotification.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Repositorios\PersonalProyect\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
