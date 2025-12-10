@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cxcxNjXf5pk=",
+  "dgSpecHash": "hdNA1x0SR+0=",
   "success": true,
-  "projectFilePath": "C:\\Repositorios\\PersonalProyect\\PersonalProyect.csproj",
+  "projectFilePath": "C:\\Repositorio\\PersonalProyect\\PersonalProyect.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",

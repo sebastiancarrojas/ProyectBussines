@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
+using PersonalProyect.Data.Seeders;
 using PersonalProyect.Services.Abtractions;
 using PersonalProyect.Services.Implementations;
 
@@ -25,6 +26,11 @@ namespace PersonalProyect
             builder.Services.AddScoped<ISaleService, SaleService>();
             builder.Services.AddScoped<IPaymentService, PaymentService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            // Seeders
+            builder.Services.AddScoped<PermissionsSeeder>();
+            builder.Services.AddScoped<UserRolesSeeder>();
+            // API
             builder.Services.AddHttpClient("ApiClient", client =>
             {
                 client.BaseAddress = new Uri("https://localhost:7172/"); // tu API
@@ -50,7 +56,8 @@ namespace PersonalProyect
 
         private static void AddIAM(WebApplicationBuilder builder)
         {
-            builder.Services.AddIdentity<User, IdentityRole>(conf =>
+            builder.Services.AddIdentity<User, IdentityRole<Guid>>(conf =>
+
             {
                 conf.User.RequireUniqueEmail = true;
                 conf.Password.RequireDigit = false;

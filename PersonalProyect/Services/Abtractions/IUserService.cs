@@ -15,7 +15,7 @@ namespace PersonalProyect.Services.Abtractions
         public Task<Response<IdentityResult>> SignupAsync(AccountUserDTO dto);
         public Task LogoutAsync();
         public Task<Response<AccountUserDTO>> UpdateUserAsync(AccountUserDTO dto);
-        // public bool CurrentUserIsAunthenticaded();
-        //public Task<bool> CurrentUserIsAuthorizedAsync(string permission, string module);    
+        public bool CurrentUserIsAuthenticated();
+        public Task<bool> CurrentUserHasPermissionAsync(string permission, string module);
     }
 }

@@ -23,9 +23,9 @@ namespace PersonalProyect.Data.Entities
         [Required]
         public Guid CustomerId { get; set; }
         [Required]
-       //  public Guid UserId { get; set; }
+        public Guid UserId { get; set; }
         public List<SaleDetail> SalesDetails { get; set; } = new();
-      //   public User Users { get; set; } = new();
+        public User Users { get; set; } = new();
         public Customer Customers { get; set; } = new();
         public List<Payment> Payments { get; set; } = new();
     }

@@ -1,4 +1,5 @@
 using PersonalProyect;
+using PersonalProyect.Data.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,16 @@ builder.ConfigureCustomSettings();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<PermissionsSeeder>();
+    await seeder.SeedAsync();
+}
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<UserRolesSeeder>();
+    await seeder.SeedAsync();
+}
 
 
 // Configure the HTTP request pipeline.

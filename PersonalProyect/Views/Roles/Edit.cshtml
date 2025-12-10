@@ -1,0 +1,60 @@
+﻿@model PersonalProyect.DTOs.RoleDTO
+
+@{
+    ViewData["Title"] = "Editar Rol";
+}
+
+<h2>Editar Rol</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Nombre del Rol</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <h4>Permisos</h4>
+
+    @if (Model.Permissions != null && Model.Permissions.Any())
+    {
+        var selectedPermissions = new List<Guid>();
+        if (!string.IsNullOrEmpty(Model.PermissionIds))
+        {
+            selectedPermissions = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(Model.PermissionIds);
+        }
+
+        <ul>
+            @foreach (var permission in Model.Permissions)
+            {
+                bool isChecked = selectedPermissions.Contains(permission.Id);
+                <li>
+                    <input type="checkbox" name="perm" value="@permission.Id" @(isChecked ? "checked" : "") />
+                    @permission.Name
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No hay permisos cargados.</p>
+    }
+
+    <input type="hidden" id="PermissionIds" name="PermissionIds" />
+
+    <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Volver</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    document.querySelector("form").addEventListener("submit", function () {
+        let selected = Array.from(document.querySelectorAll("input[name='perm']:checked"))
+                            .map(x => x.value);
+        document.getElementById("PermissionIds").value = JSON.stringify(selected);
+    });
+</script>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PersonalProyect.Data.Entities
 {
-    public class User : IdentityUser // <Guid>
+    public class User : IdentityUser<Guid>
     {
         // IdentityUser ya contiene:
         // - Id (string)
@@ -19,7 +19,11 @@ namespace PersonalProyect.Data.Entities
         [Required]
         public DateTime RegistrationDate { get; set; } = DateTime.Now;
 
-        // public List<Sale> Sales { get; set; } = new();
+        public Guid ProjectRoleId { get; set; }
+
+        public Role Role { get; set; } = null!;
+
+        public List<Sale> Sales { get; set; } = new();
     }
 }
 

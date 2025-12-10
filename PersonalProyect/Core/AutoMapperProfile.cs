@@ -21,6 +21,8 @@ namespace PersonalProyect.Core
             CreateMap<Payment, PaymentDTO>();
             CreateMap<PaymentDTO, Payment>();
             CreateMap<User, AccountUserDTO>().ReverseMap();
+            CreateMap<Permission, PermissionDTO>();
+            CreateMap<Role, RoleDTO>().ReverseMap();
         }
     }
 }

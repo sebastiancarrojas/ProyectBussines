@@ -1,0 +1,53 @@
+﻿@model PersonalProyect.DTOs.RoleDTO
+
+@{
+    ViewData["Title"] = "Crear Rol (Test)";
+}
+
+<h2>Crear Rol - Prueba</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Nombre del Rol</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <h4>Permisos cargados:</h4>
+
+    @if (Model.Permissions != null && Model.Permissions.Any())
+    {
+        <ul>
+            @foreach (var permission in Model.Permissions)
+            {
+                <li>
+                    <input type="checkbox" name="perm" value="@permission.Id" />
+                    @permission.Name
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No hay permisos disponibles.</p>
+    }
+    <input type="hidden" id="PermissionIds" name="PermissionIds" />
+    <button type="submit" class="btn btn-primary mt-3">Crear</button>
+</form>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    document.querySelector("form").addEventListener("submit", function () {
+
+        let selected = Array.from(document.querySelectorAll("input[name='perm']:checked"))
+            .map(x => x.value);
+
+        document.getElementById("PermissionIds").value = JSON.stringify(selected);
+    });
+</script>
+

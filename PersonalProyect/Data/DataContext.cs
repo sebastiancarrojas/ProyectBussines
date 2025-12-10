@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PersonalProyect.Data
 {
-    public class DataContext : IdentityDbContext<User>
+    public class DataContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         // Es el constructor que inicializa tu DataContext y le pasa a EF Core la información
         // para saber cómo conectarse a la base de datos
@@ -23,6 +23,9 @@ namespace PersonalProyect.Data
         public DbSet<Entities.Sale> Sales { get; set; }
         public DbSet<Entities.SaleDetail> SalesDetails { get; set; }
         public DbSet<Entities.Payment> Payments { get; set; }
+        public DbSet<Entities.Permission> Permissions { get; set; }
+        public DbSet<Entities.Role> Roles { get; set; }
+        public DbSet<Entities.RolePermission> RolePermissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,17 +38,69 @@ namespace PersonalProyect.Data
 
         private void ConfigureIndexes(ModelBuilder modelBuilder)
         {
-            // Configuraciones de índices pueden ir aquí
+            modelBuilder.Entity<Role>()
+                .HasIndex(r => r.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Permission>()
+                .HasIndex(p => p.Name)
+                .IsUnique();
         }
 
         private void ConfigureKeys(ModelBuilder modelBuilder)
         {
             // Configuraciones de claves pueden ir aquí
-            modelBuilder.Entity<Product>().HasMany(b => b.SalesDetails).WithOne(p => p.Products).HasForeignKey(b => b.ProductId);
-            modelBuilder.Entity<Sale>().HasMany(b => b.SalesDetails).WithOne(p => p.Sales).HasForeignKey(b => b.SaleId);
-            // modelBuilder.Entity<User>().HasMany(b => b.Sales).WithOne(p => p.Users).HasForeignKey(b => b.UserId);
-            modelBuilder.Entity<Customer>().HasMany(b => b.Sales).WithOne(p => p.Customers).HasForeignKey(b => b.CustomerId);
-            modelBuilder.Entity<Sale>().HasMany(b => b.Payments).WithOne(p => p.Sales).HasForeignKey(b => b.SaleId);
+            // Relación Product -> SaleDetails
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.SalesDetails)
+                .WithOne(sd => sd.Products)
+                .HasForeignKey(sd => sd.ProductId);
+
+            // Relación Sale -> SaleDetails
+            modelBuilder.Entity<Sale>()
+                .HasMany(s => s.SalesDetails)
+                .WithOne(sd => sd.Sales)
+                .HasForeignKey(sd => sd.SaleId);
+
+            // Relación User -> Sales
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Sales)
+                .WithOne(s => s.Users)
+                .HasForeignKey(s => s.UserId);
+
+            // Relación Customer -> Sales
+            modelBuilder.Entity<Customer>()
+                .HasMany(c => c.Sales)
+                .WithOne(s => s.Customers)
+                .HasForeignKey(s => s.CustomerId);
+
+            // Relación Sale -> Payments
+            modelBuilder.Entity<Sale>()
+                .HasMany(s => s.Payments)
+                .WithOne(p => p.Sales)
+                .HasForeignKey(p => p.SaleId);
+
+            // Relación RolePermission (PK compuesta)
+            modelBuilder.Entity<RolePermission>()
+                .HasKey(rp => new { rp.PermissionId, rp.RoleId });
+
+            modelBuilder.Entity<RolePermission>()
+                .HasOne(rp => rp.Role)
+                .WithMany(r => r.RolePermissions)
+                .HasForeignKey(rp => rp.RoleId);
+
+            modelBuilder.Entity<RolePermission>()
+                .HasOne(rp => rp.Permission)
+                .WithMany(p => p.RolePermissions)
+                .HasForeignKey(rp => rp.PermissionId);
+
+            // Relación User -> Role
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Role)
+                .WithMany() // un Role puede tener muchos usuarios
+                .HasForeignKey(u => u.ProjectRoleId)
+                .OnDelete(DeleteBehavior.Restrict); // evitar borrado en cascada
+
         }
     }
 }

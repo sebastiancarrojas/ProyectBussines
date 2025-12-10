@@ -6,6 +6,7 @@ using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
+using System.Security.Claims;
 
 namespace PersonalProyect.Services.Implementations
 {
@@ -87,7 +88,7 @@ namespace PersonalProyect.Services.Implementations
             // Crear una nueva instancia de User con los datos proporcionados
             User user = new User
             {
-                Id = Guid.NewGuid().ToString(),
+                // Id = Guid.NewGuid().ToString(),
                 UserName = dto.Email,
                 Email = dto.Email,
                 EmailConfirmed = true, // Opcional: si quieres que se confirme automáticamente
@@ -123,11 +124,13 @@ namespace PersonalProyect.Services.Implementations
             }
         }
 
-        public async Task<User> GetUserByEmailAsync(string email)
+        public async Task<User?> GetUserByEmailAsync(string email)
         {
             return await _Data.Users
-                                 .FirstOrDefaultAsync(u => u.Email == email);
+                              .Include(u => u.Role)
+                              .FirstOrDefaultAsync(u => u.Email == email);
         }
+
 
 
 
@@ -138,8 +141,44 @@ namespace PersonalProyect.Services.Implementations
         }
 
 
-        // CurrentUserIsAunthenticaded --> Roles y Permisos 
-        // CurrentUserIsAuthorizedAsync --> Roles y Permisos
+        public bool CurrentUserIsAuthenticated()
+        {
+            ClaimsPrincipal? user = _httpContextAccessor.HttpContext?.User;
+            return user?.Identity is not null && user.Identity.IsAuthenticated;
+        }
+
+        public async Task<bool> CurrentUserHasPermissionAsync(string permission, string module)
+        {
+            ClaimsPrincipal? claimsUser = _httpContextAccessor.HttpContext?.User;
+
+            // Valida si hay sesión
+            if (claimsUser is null)
+            {
+                return false;
+            }
+
+            string userName = claimsUser.Identity!.Name!;
+
+            User? user = await GetUserByEmailAsync(userName);
+
+            if (user is null)
+            {
+                return false;
+            }
+
+            if (user.Role.Name == Env.SUPER_ADMIN_ROLE_NAME)
+            {
+                return true;
+            }
+
+            return await _Data.RolePermissions
+    .Include(rp => rp.Permission)
+    .AnyAsync(rp => rp.RoleId == user.ProjectRoleId &&
+                    rp.Permission.Module == module &&
+                    rp.Permission.Name == permission);
+
+        }
+
 
     }
 }

@@ -1,150 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Repositorios\\",
+  "WorkspaceRootPath": "C:\\Repositorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Repositorio\\PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\migrations\\20251208220925_systemlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\migrations\\20251208220925_systemlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\customconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\customconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Repositorios\\PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\shared\\_styles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_styles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\shared\\_scripts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_scripts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\personalproyect.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\personalproyect.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\account\\updateuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\account\\updateuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\saledetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\saledetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\data\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\controllers\\api\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\api\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\controllers\\api\\salecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\api\\salecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\services\\abtractions\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\abtractions\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\abtractions\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\core\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\seeders\\userrolesseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\seeders\\userrolesseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\customqueryableoperationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\customqueryableoperationsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\core\\attributes\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\core\\attributes\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\implementations\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\core\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\core\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\controllers\\adminproductscontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\adminproductscontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\seeders\\permissionsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\seeders\\permissionsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\dtos\\accountuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\dtos\\accountuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\adminproducts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminproducts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\adminproducts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminproducts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\views\\adminproducts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminproducts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\services\\abtractions\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\abtractions\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorios\\personalproyect\\controllers\\api\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\api\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -154,447 +62,179 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Scripts.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Scripts.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_Scripts.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Scripts.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_Scripts.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\Roles\\Index.cshtml",
+              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Roles\\Index.cshtml",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\Roles\\Index.cshtml",
+              "RelativeToolTip": "PersonalProyect\\Views\\Roles\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:49:47.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAAAIkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:03:12.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAkwH4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:50:46.119Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "PersonalProyect\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:36:44.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Services\\Implementations\\UserService.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\UserService.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Services\\Implementations\\UserService.cs",
-              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:41:29.03Z",
+              "WhenOpened": "2025-12-10T00:13:24.789Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAACIAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T23:15:40.141Z",
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "PersonalProyect\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T00:22:27.581Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PermissionsSeeder.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\PermissionsSeeder.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Seeders\\PermissionsSeeder.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\PermissionsSeeder.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Seeders\\PermissionsSeeder.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:14:14.347Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "signup.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\signup.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Account\\signup.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\signup.cshtml*",
-              "RelativeToolTip": "PersonalProyect\\Views\\Account\\signup.cshtml*",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:05:58.9Z",
+              "Title": "20251210020659_NewMigration09122025.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs",
+              "RelativeToolTip": "PersonalProyect\\Migrations\\20251210020659_NewMigration09122025.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T02:06:59.955Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20251208220637_systemloginoficial.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs",
-              "RelativeToolTip": "PersonalProyect\\Migrations\\20251208220637_systemloginoficial.cs",
+              "DocumentIndex": 4,
+              "Title": "DataContext.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\DataContext.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\DataContext.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\DataContext.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\DataContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T22:06:39.132Z"
+              "WhenOpened": "2025-12-10T01:17:29.655Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\appsettings.json",
-              "RelativeDocumentMoniker": "PersonalProyect\\appsettings.json",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\appsettings.json",
-              "RelativeToolTip": "PersonalProyect\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-08T22:08:50.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20251208220925_Systemlogin.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Migrations\\20251208220925_Systemlogin.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Migrations\\20251208220925_Systemlogin.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Migrations\\20251208220925_Systemlogin.cs",
-              "RelativeToolTip": "PersonalProyect\\Migrations\\20251208220925_Systemlogin.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\UserService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\UserService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\UserService.cs",
+              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\UserService.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T22:09:26.428Z",
+              "WhenOpened": "2025-12-10T01:19:01.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Abtractions\\IUserService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Abtractions\\IUserService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Abtractions\\IUserService.cs",
+              "RelativeToolTip": "PersonalProyect\\Services\\Abtractions\\IUserService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:49:29.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRolesSeeder.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\UserRolesSeeder.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Seeders\\UserRolesSeeder.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\UserRolesSeeder.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Seeders\\UserRolesSeeder.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAWwE0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:17:54.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T23:15:53.175Z",
+              "Title": "CustomQueryableOperationsService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\CustomQueryableOperationsService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\CustomQueryableOperationsService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\CustomQueryableOperationsService.cs",
+              "RelativeToolTip": "PersonalProyect\\Services\\CustomQueryableOperationsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:59:34.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_Styles.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Styles.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_Styles.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_Styles.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_Styles.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:48:31.502Z"
+              "DocumentIndex": 7,
+              "Title": "CustomAuthorizeAttribute.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Core\\Attributes\\CustomAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Core\\Attributes\\CustomAuthorizeAttribute.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Core\\Attributes\\CustomAuthorizeAttribute.cs",
+              "RelativeToolTip": "PersonalProyect\\Core\\Attributes\\CustomAuthorizeAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:16:45.304Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UpdateUser.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\UpdateUser.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Account\\UpdateUser.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Account\\UpdateUser.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Account\\UpdateUser.cshtml",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAAAH4AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:07:40.672Z"
+              "DocumentIndex": 8,
+              "Title": "SaleService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\SaleService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\SaleService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\SaleService.cs",
+              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\SaleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:49:47.902Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "CustomConfiguration.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\CustomConfiguration.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\CustomConfiguration.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\CustomConfiguration.cs",
-              "RelativeToolTip": "PersonalProyect\\CustomConfiguration.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAnwEAAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T21:12:54.459Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DataContext.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\DataContext.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\DataContext.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\DataContext.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\DataContext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAB0AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:10:55.334Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PersonalProyect.csproj",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\PersonalProyect.csproj",
-              "RelativeDocumentMoniker": "PersonalProyect\\PersonalProyect.csproj",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\PersonalProyect.csproj",
-              "RelativeToolTip": "PersonalProyect\\PersonalProyect.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-08T20:28:39.237Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SaleDetail.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\SaleDetail.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\SaleDetail.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\SaleDetail.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\SaleDetail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:04:29.405Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\User.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\User.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:05:12.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Sale.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Sale.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\Sale.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Sale.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\Sale.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:04:36.602Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Payment.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\Payment.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Payment.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\Payment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:04:58.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Product.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\Product.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Product.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:04:51.778Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Customer.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\Customer.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Data\\Entities\\Customer.cs",
-              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\Customer.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:05:04.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ApiController.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\ApiController.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\Api\\ApiController.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\ApiController.cs",
-              "RelativeToolTip": "PersonalProyect\\Controllers\\Api\\ApiController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T21:17:23.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "SaleController.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\SaleController.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\Api\\SaleController.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\SaleController.cs",
-              "RelativeToolTip": "PersonalProyect\\Controllers\\Api\\SaleController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T21:17:20.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Services\\Abtractions\\IUserService.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Abtractions\\IUserService.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Services\\Abtractions\\IUserService.cs",
-              "RelativeToolTip": "PersonalProyect\\Services\\Abtractions\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:42:48.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
               "Title": "AutoMapperProfile.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Core\\AutoMapperProfile.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Core\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "PersonalProyect\\Core\\AutoMapperProfile.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Core\\AutoMapperProfile.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Core\\AutoMapperProfile.cs",
               "RelativeToolTip": "PersonalProyect\\Core\\AutoMapperProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T21:14:15.674Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T21:05:06.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "AdminProductsController1.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Controllers\\AdminProductsController1.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\AdminProductsController1.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Controllers\\AdminProductsController1.cs",
-              "RelativeToolTip": "PersonalProyect\\Controllers\\AdminProductsController1.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAwwFsAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T17:35:41.902Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "AccountUserDTO.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\DTOs\\AccountUserDTO.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\DTOs\\AccountUserDTO.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\DTOs\\AccountUserDTO.cs",
-              "RelativeToolTip": "PersonalProyect\\DTOs\\AccountUserDTO.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABoAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:57:07.266Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "LoginDTO.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\DTOs\\LoginDTO.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\DTOs\\LoginDTO.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\DTOs\\LoginDTO.cs",
-              "RelativeToolTip": "PersonalProyect\\DTOs\\LoginDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:27:39.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Edit.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminProducts\\Edit.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Edit.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminProducts\\Edit.cshtml",
-              "ViewState": "AgIAABoAAAAAAAAAAAAcwCoAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-07T17:36:31.493Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Create.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminProducts\\Create.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Create.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminProducts\\Create.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAUwCkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-07T17:36:25.078Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwDYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-07T17:36:17.128Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Services\\Implementations\\ProductService.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\ProductService.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Services\\Implementations\\ProductService.cs",
-              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\ProductService.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAA/wGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T17:36:04.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Services\\Abtractions\\IProductService.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Abtractions\\IProductService.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Services\\Abtractions\\IProductService.cs",
-              "RelativeToolTip": "PersonalProyect\\Services\\Abtractions\\IProductService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T17:35:56.826Z"
+              "WhenOpened": "2025-12-10T01:36:19.555Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\ProductController.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\Api\\ProductController.cs",
-              "ToolTip": "C:\\Repositorios\\PersonalProyect\\Controllers\\Api\\ProductController.cs",
-              "RelativeToolTip": "PersonalProyect\\Controllers\\Api\\ProductController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAYAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Entities\\User.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Entities\\User.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T17:35:13.66Z"
+              "WhenOpened": "2025-12-10T01:22:40.6Z",
+              "EditorCaption": ""
             }
           ]
         }
