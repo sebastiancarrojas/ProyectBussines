@@ -6,9 +6,10 @@ using PersonalProyect.Controllers.Api;
 using PersonalProyect.Core;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
-
+using PersonalProyect.Services.Implementations;
+using PersonalProyect.Core.Pagination;
+using PersonalProyect.DTOs.Products;
 
 namespace PersonalProyect.Controllers.Api
 {
@@ -16,11 +17,14 @@ namespace PersonalProyect.Controllers.Api
     [ApiController]
     public class ProductController : ApiController
     {
-        // Inyectar dependencias necesarias
+
+        // --------------------------------------
+        // -- Inyectar dependencias necesarias --
+        // --------------------------------------
+
         private readonly IProductService _productService;
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-
         public ProductController(IProductService productService, DataContext context, IMapper mapper)
         {
             _productService = productService;
@@ -28,42 +32,71 @@ namespace PersonalProyect.Controllers.Api
             _mapper = mapper;
         }
 
-        // GET 
+        // --------------------
+        // -- Crear producto --
+        // --------------------
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] ProductCreateDTO dto)
+        {
+            var response = await _productService.CreateAsync(dto);
+            return ControllerBasicValidation(response, ModelState);
+        }
+
+        // --------------------------------
+        // -- Obtener un producto por Id --
+        // --------------------------------
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOne([FromRoute] Guid id)
         {
-            Response<ProductDTO> response = await _productService.GetOneAsync(id);
+            Response<ProductCreateDTO> response = await _productService.GetOneAsync(id);
             return ControllerBasicValidation(response, ModelState);
         }
+
+        // --------------------------------
+        // -- Obtener lista de productos -- 
+        // --------------------------------
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            Response<List<ProductDTO>> response = await _productService.GetCompleteListAsync();
+            Response<List<ProductCreateDTO>> response = await _productService.GetCompleteListAsync();
             return ControllerBasicValidation(response, ModelState);
         }
 
-        // CREATE
-        [HttpPost]
-        public async Task<IActionResult> Create([FromForm] ProductDTO dto)
+        // ---------------------
+        // -- Editar producto --
+        // ---------------------
+
+        [HttpPatch("{id}")]
+
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ProductEditDTO dto)
         {
-            Response<ProductDTO> response = await _productService.CreateAsync(dto);
+            Response<ProductEditDTO> response = await _productService.UpdateAsync(id, dto);
             return ControllerBasicValidation(response, ModelState);
         }
 
-        // UPDATE
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ProductDTO dto)
+        // -------------------------
+        // -- Desactivar producto --
+        // -------------------------
+
+        [HttpPatch("{id}/deactivate")]
+        public async Task<IActionResult> Deactivate([FromRoute] Guid id)
         {
-            Response<ProductDTO> response = await _productService.UpdateAsync(id, dto);
+            Response<object> response = await _productService.DeactivateAsync(id);
             return ControllerBasicValidation(response, ModelState);
         }
 
-        // DELETE
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        // ----------------
+        // -- Paginación --
+        // ----------------
+
+        [HttpGet("paginated")]
+        public async Task<IActionResult> GetPaginated(
+            [FromQuery] ProductPaginationRequest request)
         {
-            Response<object> response = await _productService.DeleteAsync(id);
+            var response = await _productService.GetPaginatedListAsync(request);
             return ControllerBasicValidation(response, ModelState);
         }
     }

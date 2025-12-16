@@ -1,47 +1,366 @@
-﻿@model PersonalProyect.DTOs.ProductDTO
+﻿@using PersonalProyect.DTOs.Products
+@model ProductCreateDTO
+
+<!---------------------------------------------------------------------->
+<!--------------------------- AdminLayout ------------------------------>
+<!---------------------------------------------------------------------->
+
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Nuevo Producto";
 }
 
-<h2>Crear Producto</h2>
+<!---------------------------------------------------------------------->
+<!----------------------------- Styles --------------------------------->
+<!---------------------------------------------------------------------->
 
-<form asp-action="Create" asp-controller="AdminProducts" method="post" enctype="multipart/form-data">
+<style>
+    .input-group .flex-fill {
+        flex: 1 1 auto;
+    }
 
-    <div class="mb-3">
-        <label>Nombre</label>
-        <input class="form-control" asp-for="Name" />
+    body {
+        background-color: #eef1f4;
+    }
+
+    .product-card {
+        max-width: 1200px;
+        margin: 2rem auto;
+        border-radius: 20px;
+        background-color: #f8f9fa;
+        box-shadow: 0 20px 40px rgba(0,0,0,.08);
+        border: 1px solid #e3e6ea;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 12px;
+    }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #393d42;
+            box-shadow: 0 0 0 .15rem rgba(57,61,66,.25);
+        }
+
+    .btn-main {
+        background-color: #393d42;
+        color: #fff;
+        border-radius: 20px;
+        padding: .55rem 1.8rem;
+    }
+
+        .btn-main:hover {
+            background-color: #2f3338;
+            color: #fff;
+        }
+
+    .btn-plus {
+        background-color: #2f3338;
+        color: #fff;
+        border: 1px solid #2f3338;
+        padding: 0 16px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-group .btn-plus {
+        height: 38px;
+    }
+
+
+    .input-group .select2-container {
+        flex: 1 1 auto;
+    }
+
+        .input-group .select2-container .select2-selection--single {
+            height: 38px; 
+            display: flex;
+            align-items: center;
+        }
+
+    .input-group .select2-container--default
+    .select2-selection--single .select2-selection__arrow {
+        height: 38px;
+    }
+
+    .input-group .btn-plus {
+        height: 38px;
+    }
+
+</style>
+
+<!---------------------------------------------------------------------->
+<!------------------------------ View ---------------------------------->
+<!---------------------------------------------------------------------->
+
+<div class="card product-card">
+    <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- Texto principal -->
+            <h4 class="mb-0">Nuevo Producto</h4>
+
+            <!-- Boton volver -->
+            <a href="/AdminProducts" class="btn btn-outline-secondary btn-back">
+                Volver
+            </a>
+        </div>
+
+        <form asp-action="Create" method="post">
+
+            <div class="row g-4">
+
+                <!-- Nombres -->
+                <div class="col-md-6">
+                    <label class="form-label">Nombre</label>
+                    <input asp-for="ProductName" class="form-control" />
+                </div>
+                
+                <!-- Códigos de barras -->
+                <div class="col-md-6">
+                    <label class="form-label">Código de barras</label>
+                    <input asp-for="Barcode" class="form-control" />
+                </div>
+                
+                <!-- Descrioción -->
+                <div class="col-12">
+                    <label class="form-label">Descripción</label>
+                    <textarea asp-for="ProductDescription" rows="3" class="form-control"></textarea>
+                </div>
+
+                <!-- Precio de venta -->
+                <div class="col-md-6">
+                    <label class="form-label">Precio de venta</label>
+                    <input asp-for="UnitPrice" type="number" step="0.01" class="form-control" />
+                </div>
+
+                <!-- Stock mínimo -->
+                <div class="col-md-6">
+                    <label class="form-label">Stock mínimo</label>
+                    <input asp-for="StockMin" type="number" class="form-control" />
+                </div>
+
+                <!-- Categoría -->
+                <div class="col-md-6">
+                    <label class="form-label">Categoría</label>
+                    <div class="input-group">
+                        <div class="flex-fill">
+                            @Html.DropDownListFor(
+                            m => m.CategoryId,
+                                                        (SelectList)ViewBag.Categories,
+                                                        "-- Seleccione --",
+                                                        new { @class = "form-select select2 w-100" }
+                                                        )
+                        </div>
+                        <button type="button"
+                                class="btn btn-plus"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalCategoria">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Marca -->
+                <div class="col-md-6">
+                    <label class="form-label">Marca</label>
+                    <div class="input-group">
+                        <div class="flex-fill">
+                            <select asp-for="BrandId"
+                                    asp-items="@(ViewBag.Brands)"
+                                    class="form-select select2 w-100">
+                                <option value="">-- Seleccione --</option>
+                            </select>
+                        </div>
+                        <button type="button"
+                                class="btn btn-plus"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalMarca">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+                <!-- Boton guardar -->
+                <div class="mt-5 d-flex justify-content-end">
+                    <button class="btn btn-main">Guardar</button>
+                </div>
+
+        </form>
+
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>Descripción</label>
-        <textarea class="form-control" asp-for="Description"></textarea>
+<!---------------------------------------------------------------------->
+<!----------------------------- Modals --------------------------------->
+<!---------------------------------------------------------------------->
+
+<!-- Modal para crear marca -->
+<div class="modal fade" id="modalMarca" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Nueva Marca</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input id="newBrandName" class="form-control" placeholder="Nombre de la marca..." />
+                <span id="brandError" class="text-danger d-none"></span>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnSaveBrand">Guardar</button>
+            </div>
+
+        </div>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>Precio</label>
-        <input class="form-control" asp-for="Price" type="number" step="0.01" />
+<!-- Modal para crear categoría -->
+<div class="modal fade" id="modalCategoria" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Nueva Categoría</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input id="newCategoryName" class="form-control" placeholder="Nombre de la categoría..." required />
+                <span id="categoryError" class="text-danger d-none"></span>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnSaveCategory">Guardar</button>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>Código</label>
-        <input class="form-control" asp-for="Code" />
-    </div>
+<!---------------------------------------------------------------------->
+<!----------------------------- Script --------------------------------->
+<!---------------------------------------------------------------------->
 
-    <div class="mb-3">
-        <label>Estado</label>
-        <select class="form-select" asp-for="Status">
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-        </select>
-    </div>
+@section Scripts {
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- Campo para subir imagen -->
-    <div class="mb-3">
-        <label>Imagen del producto</label>
-        <input class="form-control" type="file" asp-for="ImageFile" />
-    </div>
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <button class="btn btn-primary">Guardar</button>
-    <a href="/AdminProducts" class="btn btn-secondary">Cancelar</a>
-</form>
+    <!-- jQuery Validation -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Select2
+            $('.select2').select2({
+                placeholder: "-- Seleccione --",
+                allowClear: true,
+                width: '100%'
+            });
+
+            // Guardar categoría por AJAX
+            $("#btnSaveCategory").on("click", function () {
+                let name = $("#newCategoryName").val().trim();
+                $("#categoryError").addClass("d-none").text("");
+
+                if (name === "") {
+                    $("#categoryError")
+                        .removeClass("d-none")
+                        .text("El nombre es obligatorio");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/AdminCategories/CreateFromAjax",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        categoryName: name,
+                        status: "Activo"
+                    }),
+                    success: function (resp) {
+                        let option = new Option(resp.categoryName, resp.id, true, true);
+                        $("#CategoryId").append(option).trigger("change");
+
+                        $("#modalCategoria").modal("hide");
+                        $("#newCategoryName").val("");
+                    },
+                    error: function (xhr) {
+                        console.error(xhr.responseText);
+
+                        $("#categoryError")
+                            .removeClass("d-none")
+                            .text(xhr.responseText || "Error al crear la categoría");
+                    }
+                });
+            });
+
+                    // Guardar marca por AJAX
+        $("#btnSaveBrand").on("click", function () {
+            let name = $("#newBrandName").val().trim();
+            $("#brandError").addClass("d-none").text("");
+
+            if (name === "") {
+                $("#brandError")
+                    .removeClass("d-none")
+                    .text("El nombre es obligatorio");
+                return;
+            }
+
+            $.ajax({
+                url: "/AdminBrands/CreateFromAjax",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    brandName: name,
+                    status: "Activo"
+                }),
+                success: function (resp) {
+                    let option = new Option(resp.brandName, resp.id, true, true);
+                    $("#BrandId").append(option).trigger("change");
+
+                    $("#modalMarca").modal("hide");
+                    $("#newBrandName").val("");
+                },
+                error: function (xhr) {
+                    $("#brandError")
+                        .removeClass("d-none")
+                        .text(xhr.responseText || "Error al crear la marca");
+                }
+            });
+        });
+
+
+            // Validación del formulario producto
+            $("#productForm").validate({
+                rules: {
+                    ProductName: "required",
+                    UnitPrice: { required: true, number: true, min: 0 },
+                    CostPrice: { required: true, number: true, min: 0 },
+                    CurrentStock: { required: true, number: true, min: 0 },
+                    StockMin: { required: true, number: true, min: 0 },
+                    UnitOfMeasure: "required",
+                    CategoryId: "required",
+                    BrandId: "required"
+                }
+            });
+
+        });
+    </script>
+}

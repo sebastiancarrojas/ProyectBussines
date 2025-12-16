@@ -1,16 +1,21 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Core;
+using PersonalProyect.Core.Pagination;
 using PersonalProyect.Data;
+using PersonalProyect.Data.Abstractions;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Products;
 using PersonalProyect.Services.Abtractions;
 
 namespace PersonalProyect.Services.Implementations
 {
     public class ProductService : CustomQueryableOperationsService, IProductService
     {
-        // Inyectar dependencias necesarias
+        // --------------------------------------
+        // -- Inyectar dependencias necesarias --
+        // --------------------------------------
+
         private readonly DataContext _context;
         private readonly IMapper _mapper;
         public ProductService(DataContext context, IMapper mapper) : base(context, mapper)
@@ -19,87 +24,182 @@ namespace PersonalProyect.Services.Implementations
             _mapper = mapper;
         }
 
-        // Create Product
-        public async Task<Response<ProductDTO>> CreateAsync(ProductDTO dto)
+        // --------------------
+        // -- Crear producto --
+        // --------------------
+
+        public async Task<Response<ProductCreateDTO>> CreateAsync(ProductCreateDTO dto)
         {
             try
             {
-                if (dto.ImageFile != null)
-                {
-                    var folder = Path.Combine("wwwroot", "images", "products");
-                    if (!Directory.Exists(folder))
-                        Directory.CreateDirectory(folder);
-
-                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.ImageFile.FileName)}";
-                    var filePath = Path.Combine(folder, fileName);
-
-                    using var stream = new FileStream(filePath, FileMode.Create);
-                    await dto.ImageFile.CopyToAsync(stream);
-
-                    dto.ImageUrl = $"/images/products/{fileName}";
-                }
-
                 var entity = _mapper.Map<Product>(dto);
                 _context.Products.Add(entity);
                 await _context.SaveChangesAsync();
 
-                var resultDto = _mapper.Map<ProductDTO>(entity);
-                return new Response<ProductDTO> { Result = resultDto };
+                var resultDto = _mapper.Map<ProductCreateDTO>(entity);
+
+                // ✅ Aquí marcamos la operación como exitosa
+                return Response<ProductCreateDTO>.Success(resultDto, "Producto creado correctamente");
             }
             catch (Exception ex)
             {
-                return Response<ProductDTO>.Failure(ex, "Error al crear el producto");
+                return Response<ProductCreateDTO>.Failure(ex, "Error al crear el producto");
+            }
+        }
 
+        // --------------------------------
+        // -- Obtener un producto por Id --
+        // --------------------------------
+
+        public async Task<Response<ProductCreateDTO>> GetOneAsync(Guid id)
+        {
+            return await GetOneAsync<Product, ProductCreateDTO>(id);
+        }
+
+        // --------------------------------
+        // -- Obtener lista de productos --
+        // --------------------------------
+
+        public async Task<Response<List<ProductCreateDTO>>> GetCompleteListAsync()
+        {
+            return await GetCompleteListAsync<Product, ProductCreateDTO>();
+        }
+
+        // -------------------------
+        // -- Desactivar producto --
+        // -------------------------
+
+        public async Task<Response<object>> DeactivateAsync(Guid id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+                return new Response<object>
+                {
+                    IsSuccess = false,
+                    Message = "Producto no encontrado"
+                };
+
+            // Cambiar estado a inactivo
+            product.Status = "Inactivo";
+            product.UpdatedAt = DateTime.Now;
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+
+            return new Response<object>
+            {
+                IsSuccess = true,
+                Message = "Producto desactivado correctamente"
+            };
+        }
+
+
+        // ---------------------
+        // -- Editar producto --
+        // ---------------------
+        public async Task<Response<ProductEditDTO>> UpdateAsync(Guid id, ProductEditDTO dto)
+        {
+            try
+            {
+                var entity = await _context.Products.FindAsync(id);
+                if (entity == null)
+                    return Response<ProductEditDTO>.Failure(null, "Producto no encontrado");
+
+                // Validaciones FK
+                if (dto.BrandId.HasValue &&
+                    !await _context.Brands.AnyAsync(b => b.Id == dto.BrandId.Value))
+                    return Response<ProductEditDTO>.Failure(null, "Marca inválida");
+
+                if (dto.CategoryId.HasValue &&
+                    !await _context.Categories.AnyAsync(c => c.Id == dto.CategoryId.Value))
+                    return Response<ProductEditDTO>.Failure(null, "Categoría inválida");
+
+                // Mapeo parcial seguro
+                _mapper.Map(dto, entity);
+
+                // Asignación explícita de FK
+                if (dto.BrandId.HasValue)
+                    entity.BrandId = dto.BrandId.Value;
+
+                if (dto.CategoryId.HasValue)
+                    entity.CategoryId = dto.CategoryId.Value;
+
+                entity.UpdatedAt = DateTime.Now;
+
+                await _context.SaveChangesAsync();
+
+                return Response<ProductEditDTO>.Success(dto, "Producto actualizado correctamente");
+            }
+            catch (DbUpdateException ex)
+            {
+                return Response<ProductEditDTO>.Failure(
+                    ex,
+                    ex.InnerException?.Message ?? ex.Message
+                );
+            }
+        }
+
+
+
+
+        // --------------------
+        // -- Lista paginada --
+        // --------------------
+
+        public async Task<Response<PaginationResponse<ProductListDTO>>>
+            GetPaginatedListAsync(ProductPaginationRequest request)
+        {
+            var queryable = _context.Products
+                .Include(p => p.Brands)
+                .Include(p => p.Categories)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request.Filter))
+            {
+                string filter = request.Filter.ToLower(); // Opcional: búsqueda case-insensitive
+                queryable = queryable.Where(p =>
+                    p.ProductName.ToLower().Contains(filter) ||
+                    p.Barcode.ToLower().Contains(filter) ||
+                    p.Brands.BrandName.ToLower().Contains(filter) ||
+                    p.Categories.CategoryName.ToLower().Contains(filter));
             }
 
-        }
+            if (request.CategoryId.HasValue)
+                queryable = queryable.Where(p =>
+                    p.CategoryId == request.CategoryId.Value);
 
+            if (request.BrandId.HasValue)
+                queryable = queryable.Where(p =>
+                    p.BrandId == request.BrandId.Value);
 
-        // Delete Product
-        public async Task<Response<object>> DeleteAsync(Guid id)
-        {
-            return await DeleteAsync<Product>(id);
-        }
+            if (!string.IsNullOrWhiteSpace(request.Status))
+                queryable = queryable.Where(p => p.Status == request.Status);
 
-        // Update Product
-        public async Task<Response<ProductDTO>> UpdateAsync(Guid id, ProductDTO dto)
-        {
-            return await UpdateAsync<Product, ProductDTO>(id, dto);
-        }
+            if (request.StockMin.HasValue)
+                queryable = queryable.Where(p => p.CurrentStock >= request.StockMin.Value);
 
-        // Get 
-        public async Task<Response<ProductDTO>> GetOneAsync(Guid id)
-        {
-            return await GetOneAsync<Product, ProductDTO>(id);
-        }
+            if (request.StockMax.HasValue)
+                queryable = queryable.Where(p => p.CurrentStock <= request.StockMax.Value);
 
-        public async Task<Response<List<ProductDTO>>> GetCompleteListAsync()
-        {
-            return await GetCompleteListAsync<Product, ProductDTO>();
-        }
+            var dtoQueryable = queryable.Select(p => new ProductListDTO
+            {
+                Id = p.Id,
+                ProductName = p.ProductName,
+                Barcode = p.Barcode,
+                BrandName = p.Brands.BrandName,
+                CategoryName = p.Categories.CategoryName,
+                CurrentStock = p.CurrentStock,
+                Status = p.Status,
+                UnitPrice = p.UnitPrice,
+                StockMin = p.StockMin,
+                ProductDescription = p.ProductDescription
+            });
 
-        // Temporal - Eliminar
-        public async Task<Response<List<ProductDTO>>> GetReservedAsync()
-        {
-            var products = await _context.Products
-                .Where(p => p.SalesDetails.Any())
-                .ToListAsync();
-
-            var dto = _mapper.Map<List<ProductDTO>>(products);
-
-            return Response<List<ProductDTO>>.Success(dto);
-        }
-
-        // Temporal - Eliminar
-        public async Task<Response<List<ProductDTO>>> GetAvailableAsync()
-        {
-            var products = await _context.Products
-                .Where(p => !p.SalesDetails.Any())
-                .ToListAsync();
-
-            var dto = _mapper.Map<List<ProductDTO>>(products);
-
-            return Response<List<ProductDTO>>.Success(dto);
+            return await GetPaginationAsync<ProductListDTO>(
+                request,
+                dtoQueryable
+            );
         }
     }
 }

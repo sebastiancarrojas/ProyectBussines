@@ -26,6 +26,10 @@ namespace PersonalProyect.Data
         public DbSet<Entities.Permission> Permissions { get; set; }
         public DbSet<Entities.Role> Roles { get; set; }
         public DbSet<Entities.RolePermission> RolePermissions { get; set; }
+        public DbSet<Entities.Brand> Brands { get; set; }
+        public DbSet<Entities.Category> Categories { get; set; }
+        public DbSet<Entities.Supplier> Suppliers { get; set; }
+        public DbSet<Entities.ProductSupplier> ProductSuppliers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -68,6 +72,18 @@ namespace PersonalProyect.Data
                 .WithOne(s => s.Users)
                 .HasForeignKey(s => s.UserId);
 
+            // Relación Brand -> Products
+            modelBuilder.Entity<Brand>()
+                .HasMany(b => b.Products)
+                .WithOne(p => p.Brands)
+                .HasForeignKey(p => p.BrandId);
+
+            // Relación Category -> Products
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(p => p.Categories)
+                .HasForeignKey(p => p.CategoryId);
+
             // Relación Customer -> Sales
             modelBuilder.Entity<Customer>()
                 .HasMany(c => c.Sales)
@@ -100,6 +116,21 @@ namespace PersonalProyect.Data
                 .WithMany() // un Role puede tener muchos usuarios
                 .HasForeignKey(u => u.ProjectRoleId)
                 .OnDelete(DeleteBehavior.Restrict); // evitar borrado en cascada
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasKey(ps => new { ps.ProductId, ps.SupplierId });
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(ps => ps.Product)
+                .WithMany(p => p.ProductSuppliers)
+                .HasForeignKey(ps => ps.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(ps => ps.Supplier)
+                .WithMany(s => s.ProductSuppliers)
+                .HasForeignKey(ps => ps.SupplierId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

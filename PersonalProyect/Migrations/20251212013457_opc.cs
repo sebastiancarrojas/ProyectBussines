@@ -5,7 +5,7 @@
 namespace PersonalProyect.Migrations
 {
     /// <inheritdoc />
-    public partial class NewMigration09122025 : Migration
+    public partial class opc : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

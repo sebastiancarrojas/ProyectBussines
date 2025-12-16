@@ -1,4 +1,5 @@
-﻿@model PersonalProyect.DTOs.ProductDTO
+﻿@using PersonalProyect.DTOs.Products
+@model ProductCreateDTO
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Editar Producto";
@@ -12,24 +13,18 @@
 
     <div class="mb-3">
         <label>Nombre</label>
-        <input class="form-control" asp-for="Name" />
+        <input class="form-control" asp-for="ProductName" />
     </div>
 
     <div class="mb-3">
         <label>Descripción</label>
-        <textarea class="form-control" asp-for="Description"></textarea>
+        <textarea class="form-control" asp-for="ProductDescription"></textarea>
     </div>
 
     <div class="mb-3">
         <label>Precio</label>
-        <input class="form-control" asp-for="Price" type="number" step="0.01" />
+        <input class="form-control" asp-for="UnitPrice" type="number" step="0.01" />
     </div>
-
-    <div class="mb-3">
-        <label>Código</label>
-        <input class="form-control" asp-for="Code" />
-    </div>
-
     <div class="mb-3">
         <label>Estado</label>
         <select class="form-select" asp-for="Status">

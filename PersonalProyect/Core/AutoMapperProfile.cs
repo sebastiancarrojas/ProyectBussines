@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
-
+using PersonalProyect.DTOs.Products;
 
 namespace PersonalProyect.Core
 {
@@ -9,20 +9,38 @@ namespace PersonalProyect.Core
     {
         public AutoMapperProfile()
         {
-            // Aquí puedes agregar tus configuraciones de mapeo
-            CreateMap<ProductDTO, Product>();
-            CreateMap<Product, ProductDTO>();
-            CreateMap<CustomerDTO, Customer>();
-            CreateMap<Customer, CustomerDTO>();
-            CreateMap<SaleDetailDTO, SaleDetail>();
-            CreateMap<SaleDetail, SaleDetailDTO>();
-            CreateMap<SaleDTO, Sale>();
-            CreateMap<Sale, SaleDTO>();
-            CreateMap<Payment, PaymentDTO>();
-            CreateMap<PaymentDTO, Payment>();
+            // -------------------
+            // Create
+            // -------------------
+            CreateMap<ProductCreateDTO, Product>();
+            CreateMap<Product, ProductCreateDTO>();
+
+            // -------------------
+            // Edit (PATCH seguro)
+            // -------------------
+            CreateMap<ProductEditDTO, Product>()
+                .ForMember(d => d.BrandId, opt => opt.Ignore())
+                .ForMember(d => d.CategoryId, opt => opt.Ignore())
+                .ForAllMembers(opt =>
+                    opt.Condition((src, dest, srcMember) => srcMember != null)
+                );
+
+            CreateMap<Product, ProductEditDTO>();
+
+            // -------------------
+            // Otros mapeos
+            // -------------------
+            CreateMap<CustomerDTO, Customer>().ReverseMap();
+            CreateMap<SaleDetailDTO, SaleDetail>().ReverseMap();
+            CreateMap<SaleDTO, Sale>().ReverseMap();
+            CreateMap<PaymentDTO, Payment>().ReverseMap();
             CreateMap<User, AccountUserDTO>().ReverseMap();
-            CreateMap<Permission, PermissionDTO>();
             CreateMap<Role, RoleDTO>().ReverseMap();
+            CreateMap<Permission, PermissionDTO>();
+            CreateMap<Category, CategoryDTO>().ReverseMap();
+            CreateMap<Brand, BrandDTO>().ReverseMap();
+            CreateMap<CategoryCreateDTO, Category>();
+            CreateMap<BrandCreateDTO, Brand>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Core;
+using PersonalProyect.Core.Pagination;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Abstractions;
 
@@ -155,5 +156,29 @@ namespace PersonalProyect.Services
                 return Response<TDTO>.Failure(ex, "Error retrieving entity");
             }
         }
+
+        protected async Task<Response<PaginationResponse<TDto>>>
+            GetPaginationAsync<TDto>(
+                PaginationRequest request,
+                IQueryable<TDto> queryable)
+        {
+            var pagedList = await PagedList<TDto>
+                .ToPagedListAsync(queryable, request);
+
+            var pagination = new PaginationResponse<TDto>
+            {
+                CurrentPage = pagedList.CurrentPage,
+                TotalPages = pagedList.TotalPages,
+                RecordsPerPage = pagedList.RecordsPerPage,
+                TotalCount = pagedList.TotalCount,
+                Filter = request.Filter,
+                List = pagedList
+            };
+
+            return Response<PaginationResponse<TDto>>.Success(pagination);
+        }
+
+
+
     }
 }

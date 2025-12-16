@@ -179,6 +179,22 @@ namespace PersonalProyect.Services.Implementations
 
         }
 
+        // ---------------------------------------------------------
+        // -------- List Users for Admin Layout NavBar -------------
+        // ---------------------------------------------------------
 
+        public async Task<List<UserListDTO>> GetAllUsersAsync()
+        {
+           return await _Data.Users.Include(u => u.Role).Select(u => new UserListDTO
+                {
+                    Id = u.Id.ToString(),
+                    Email = u.Email,
+                    FullName = u.FullName,
+                    UserName = u.UserName,
+                    RegistrationDate = u.RegistrationDate,
+                    RoleName = u.Role.Name
+                })
+                .ToListAsync();
+        }
     }
 }

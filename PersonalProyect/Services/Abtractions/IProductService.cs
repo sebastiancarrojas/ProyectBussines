@@ -1,14 +1,31 @@
 ﻿using PersonalProyect.Core;
-using PersonalProyect.DTOs;
+using PersonalProyect.Core.Pagination;
+using PersonalProyect.Data.Abstractions;
+using PersonalProyect.DTOs.Products;
 
 namespace PersonalProyect.Services.Abtractions
 {
     public interface IProductService
     {
-        public Task<Response<object>> DeleteAsync(Guid id);
-        public Task<Response<ProductDTO>> CreateAsync(DTOs.ProductDTO dto);
-        public Task<Response<ProductDTO>> UpdateAsync(Guid id, ProductDTO dto);
-        public Task<Response<ProductDTO>> GetOneAsync(Guid id);
-        public Task<Response<List<ProductDTO>>> GetCompleteListAsync();
+        // Crear producto
+        public Task<Response<ProductCreateDTO>> CreateAsync(ProductCreateDTO dto);
+
+        // Obtener producto por id
+        public Task<Response<ProductCreateDTO>> GetOneAsync(Guid id);
+
+        // Obtener lista de productos
+        public Task<Response<List<ProductCreateDTO>>> GetCompleteListAsync();
+
+        // Desactivar producto
+        public Task<Response<object>> DeactivateAsync(Guid id);
+
+        // Editar producto
+        public Task<Response<ProductEditDTO>> UpdateAsync(Guid id, ProductEditDTO dto);
+
+        // Lista paginada
+
+        public Task<Response<PaginationResponse<ProductListDTO>>>
+             GetPaginatedListAsync(ProductPaginationRequest request);
+
     }
 }

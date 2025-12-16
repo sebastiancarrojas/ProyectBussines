@@ -19,6 +19,7 @@ namespace PersonalProyect
             // Configura el DbContext con la cadena de conexión
             builder.Services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
+
             // Registra los servicios personalizados
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ICustomerService, CustomerService>();
@@ -27,9 +28,12 @@ namespace PersonalProyect
             builder.Services.AddScoped<IPaymentService, PaymentService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
-            // Seeders
-            builder.Services.AddScoped<PermissionsSeeder>();
-            builder.Services.AddScoped<UserRolesSeeder>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IBrandService, BrandService>();
+
+            // MasterSeeder
+            builder.Services.AddTransient<MasterSeeder>();
+
             // API
             builder.Services.AddHttpClient("ApiClient", client =>
             {

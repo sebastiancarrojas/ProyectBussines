@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Repositorio\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\seeders\\brandsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\seeders\\brandsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\seeders\\productsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\seeders\\productsseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\data\\seeders\\categoriesseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\data\\seeders\\categoriesseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BrandsSeeder.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\BrandsSeeder.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Seeders\\BrandsSeeder.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\BrandsSeeder.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Seeders\\BrandsSeeder.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAFAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T02:24:47.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriesSeeder.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\CategoriesSeeder.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Seeders\\CategoriesSeeder.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\CategoriesSeeder.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Seeders\\CategoriesSeeder.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAAD8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T02:24:46.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsSeeder.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\ProductsSeeder.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Data\\Seeders\\ProductsSeeder.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Data\\Seeders\\ProductsSeeder.cs",
+              "RelativeToolTip": "PersonalProyect\\Data\\Seeders\\ProductsSeeder.cs",
+              "ViewState": "AgIAALgBAAAAAAAAAAAAAMkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T02:24:21.438Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

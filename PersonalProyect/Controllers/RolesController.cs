@@ -1,17 +1,18 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
 using PersonalProyect.Core;
-using PersonalProyect.Services.Implementations;
 using PersonalProyect.Core.Attributes;
 
 namespace PersonalProyect.Controllers
 {
     public class RolesController : Controller
     {
-        // Inyección de dependencias
+        // -------------------------------------------------------------------
+        // ------------------ Inyección de dependencias  ---------------------
+        // -------------------------------------------------------------------
+
         private readonly IRoleService _roleService;
         private readonly INotyfService _notyfService;
 
@@ -26,21 +27,16 @@ namespace PersonalProyect.Controllers
         // -------------------------------------------------------------------
 
         [HttpGet]
-        // [CustomAuthorize(permission: "showRoles", module: "Roles")]
+        [CustomAuthorize(permission: "showRoles", module: "Roles")]
         public async Task<IActionResult> Index()
         {
-            // Obtener todos los roles
             var response = await _roleService.GetAllAsync();
 
             if (!response.IsSuccess)
             {
-                // Si usas TempData o ViewBag para errores, deja esto así:
                 TempData["Error"] = response.Message;
-
                 return RedirectToAction("Index", "Home");
             }
-
-            // Retornamos la lista de roles directamente
             return View(response.Result);
         }
 
@@ -59,7 +55,6 @@ namespace PersonalProyect.Controllers
                 _notyfService.Error(permissionsResponse.Message);
                 return RedirectToAction(nameof(Index));
             }
-
             var dto = new RoleDTO
             {
                 Permissions = permissionsResponse.Result
@@ -75,31 +70,21 @@ namespace PersonalProyect.Controllers
             if (!ModelState.IsValid)
             {
                 _notyfService.Error("Debe ajustar los errores de validación");
-
-                // Obtener permisos nuevamente
                 var permissionsResponse = await _roleService.GetPermissionsAsync();
                 if (!permissionsResponse.IsSuccess)
                 {
                     _notyfService.Error(permissionsResponse.Message);
                     return RedirectToAction(nameof(Index));
                 }
-
-                // Cargar permisos al DTO
                 dto.Permissions = permissionsResponse.Result;
-
                 return View(dto);
             }
-
-            // Crear el rol
             var createResponse = await _roleService.CreateAsync(dto);
-
             if (createResponse.IsSuccess)
             {
                 _notyfService.Success(createResponse.Message);
                 return RedirectToAction(nameof(Index));
             }
-
-            // Error al crear
             _notyfService.Error(createResponse.Message);
 
             // Volver a cargar permisos
@@ -109,9 +94,7 @@ namespace PersonalProyect.Controllers
                 _notyfService.Error(permissionsResponse2.Message);
                 return RedirectToAction(nameof(Index));
             }
-
             dto.Permissions = permissionsResponse2.Result;
-
             return View(dto);
         }
 
@@ -162,41 +145,29 @@ namespace PersonalProyect.Controllers
             if (!ModelState.IsValid)
             {
                 _notyfService.Error("Debe ajustar los errores de validación");
-
-                // Volver a cargar permisos
                 var permissionsResponse = await _roleService.GetPermissionsAsync();
                 if (!permissionsResponse.IsSuccess)
                 {
                     _notyfService.Error(permissionsResponse.Message);
                     return RedirectToAction(nameof(Index));
                 }
-
                 dto.Permissions = permissionsResponse.Result;
-
                 return View(dto);
             }
-
-            // Intentar actualizar
             var updateResponse = await _roleService.EditAsync(dto);
-
             if (updateResponse.IsSuccess)
             {
                 _notyfService.Success(updateResponse.Message);
                 return RedirectToAction(nameof(Index));
             }
-
             _notyfService.Error(updateResponse.Message);
-
-            // Si falla, volver a cargar permisos para mostrar la vista correctamente
             var permissionsResponse2 = await _roleService.GetPermissionsAsync();
             if (!permissionsResponse2.IsSuccess)
             {
                 _notyfService.Error(permissionsResponse2.Message);
                 return RedirectToAction(nameof(Index));
             }
-
             dto.Permissions = permissionsResponse2.Result;
-
             return View(dto);
         }
 

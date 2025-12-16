@@ -17,5 +17,6 @@ namespace PersonalProyect.Services.Abtractions
         public Task<Response<AccountUserDTO>> UpdateUserAsync(AccountUserDTO dto);
         public bool CurrentUserIsAuthenticated();
         public Task<bool> CurrentUserHasPermissionAsync(string permission, string module);
+        public Task<List<UserListDTO>> GetAllUsersAsync();
     }
 }

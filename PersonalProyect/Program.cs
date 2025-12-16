@@ -8,16 +8,15 @@ builder.ConfigureCustomSettings();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// MasterSeeder
 using (var scope = app.Services.CreateScope())
 {
-    var seeder = scope.ServiceProvider.GetRequiredService<PermissionsSeeder>();
-    await seeder.SeedAsync();
+    var seeder = scope.ServiceProvider.GetRequiredService<MasterSeeder>();
+    await seeder.Run(); // <-- Ejecuta todos los seeders
 }
-using (var scope = app.Services.CreateScope())
-{
-    var seeder = scope.ServiceProvider.GetRequiredService<UserRolesSeeder>();
-    await seeder.SeedAsync();
-}
+
+
 
 
 // Configure the HTTP request pipeline.
