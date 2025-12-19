@@ -24,8 +24,11 @@ namespace PersonalProyect.Services.Abtractions
 
         // Lista paginada
 
-        public Task<Response<PaginationResponse<ProductListDTO>>>
-             GetPaginatedListAsync(ProductPaginationRequest request);
+        public Task<Response<PaginationResponse<ProductListDTO>>> GetPaginatedListAsync(ProductPaginationRequest request);
+
+        // Buscar producto en registrar venta
+
+        public Task<Response<List<ProductSearchDTO>>> SearchForSaleAsync(string term);
 
     }
 }

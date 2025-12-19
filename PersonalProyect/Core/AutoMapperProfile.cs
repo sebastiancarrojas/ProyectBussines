@@ -31,9 +31,6 @@ namespace PersonalProyect.Core
             // Otros mapeos
             // -------------------
             CreateMap<CustomerDTO, Customer>().ReverseMap();
-            CreateMap<SaleDetailDTO, SaleDetail>().ReverseMap();
-            CreateMap<SaleDTO, Sale>().ReverseMap();
-            CreateMap<PaymentDTO, Payment>().ReverseMap();
             CreateMap<User, AccountUserDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
             CreateMap<Permission, PermissionDTO>();

@@ -10,11 +10,13 @@ using PersonalProyect.Services.Abtractions;
 using PersonalProyect.Services.Implementations;
 using PersonalProyect.Core.Pagination;
 using PersonalProyect.DTOs.Products;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PersonalProyect.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ApiController
     {
 
@@ -98,6 +100,21 @@ namespace PersonalProyect.Controllers.Api
         {
             var response = await _productService.GetPaginatedListAsync(request);
             return ControllerBasicValidation(response, ModelState);
+        }
+
+        // -----------------------------------
+        // -- Buscar producto para la venta --
+        // -----------------------------------
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchForSale([FromQuery] string term)
+        {
+            var response = await _productService.SearchForSaleAsync(term);
+
+            if (!response.IsSuccess)
+                return BadRequest(response);
+
+            return Ok(response);
         }
     }
 }

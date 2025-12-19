@@ -22,6 +22,8 @@ namespace PersonalProyect.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("SaleNumberSequence");
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
                     b.Property<Guid>("Id")
@@ -232,31 +234,6 @@ namespace PersonalProyect.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PersonalProyect.Data.Entities.Payment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("SaleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SaleId");
-
-                    b.ToTable("Payments");
-                });
-
             modelBuilder.Entity("PersonalProyect.Data.Entities.Permission", b =>
                 {
                     b.Property<Guid>("Id")
@@ -324,7 +301,7 @@ namespace PersonalProyect.Migrations
                     b.Property<string>("UnitOfMeasure")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("UnitPrice")
+                    b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -400,27 +377,24 @@ namespace PersonalProyect.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("OutstandingBalance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("PaymentStatus")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SaleType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long>("SaleNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValueSql("NEXT VALUE FOR SaleNumberSequence");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SaleType")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalPaid")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("UserId")
@@ -628,17 +602,6 @@ namespace PersonalProyect.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PersonalProyect.Data.Entities.Payment", b =>
-                {
-                    b.HasOne("PersonalProyect.Data.Entities.Sale", "Sales")
-                        .WithMany("Payments")
-                        .HasForeignKey("SaleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Sales");
-                });
-
             modelBuilder.Entity("PersonalProyect.Data.Entities.Product", b =>
                 {
                     b.HasOne("PersonalProyect.Data.Entities.Brand", "Brands")
@@ -700,9 +663,7 @@ namespace PersonalProyect.Migrations
                 {
                     b.HasOne("PersonalProyect.Data.Entities.Customer", "Customers")
                         .WithMany("Sales")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("PersonalProyect.Data.Entities.User", "Users")
                         .WithMany("Sales")
@@ -779,8 +740,6 @@ namespace PersonalProyect.Migrations
 
             modelBuilder.Entity("PersonalProyect.Data.Entities.Sale", b =>
                 {
-                    b.Navigation("Payments");
-
                     b.Navigation("SalesDetails");
                 });
 

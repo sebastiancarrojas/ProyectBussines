@@ -10,7 +10,7 @@ namespace PersonalProyect.Data.Entities
         public required string ProductName { get; set; }
         public string? Barcode { get; set; }
         public string? ProductDescription { get; set; }
-        public decimal? UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         public int? StockMin { get; set; }
         public int? CurrentStock { get; set; }
         public string? UnitOfMeasure { get; set; }

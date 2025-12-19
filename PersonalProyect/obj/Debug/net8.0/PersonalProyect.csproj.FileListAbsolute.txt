@@ -539,3 +539,4 @@ C:\Repositorio\PersonalProyect\obj\Debug\net8.0\refint\PersonalProyect.dll
 C:\Repositorio\PersonalProyect\obj\Debug\net8.0\PersonalProyect.pdb
 C:\Repositorio\PersonalProyect\obj\Debug\net8.0\PersonalProyect.genruntimeconfig.cache
 C:\Repositorio\PersonalProyect\obj\Debug\net8.0\ref\PersonalProyect.dll
+C:\Repositorio\PersonalProyect\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

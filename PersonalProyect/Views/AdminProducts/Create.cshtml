@@ -109,41 +109,35 @@
             </a>
         </div>
 
-        <form asp-action="Create" method="post">
+        <form id="productForm">
 
             <div class="row g-4">
 
-                <!-- Nombres -->
                 <div class="col-md-6">
                     <label class="form-label">Nombre</label>
-                    <input asp-for="ProductName" class="form-control" />
+                    <input id="ProductName" class="form-control" />
                 </div>
-                
-                <!-- Códigos de barras -->
+
                 <div class="col-md-6">
                     <label class="form-label">Código de barras</label>
-                    <input asp-for="Barcode" class="form-control" />
+                    <input id="Barcode" class="form-control" />
                 </div>
-                
-                <!-- Descrioción -->
+
                 <div class="col-12">
                     <label class="form-label">Descripción</label>
-                    <textarea asp-for="ProductDescription" rows="3" class="form-control"></textarea>
+                    <textarea id="ProductDescription" rows="3" class="form-control"></textarea>
                 </div>
 
-                <!-- Precio de venta -->
                 <div class="col-md-6">
                     <label class="form-label">Precio de venta</label>
-                    <input asp-for="UnitPrice" type="number" step="0.01" class="form-control" />
+                    <input id="UnitPrice" type="number" step="0.01" class="form-control" />
                 </div>
 
-                <!-- Stock mínimo -->
                 <div class="col-md-6">
                     <label class="form-label">Stock mínimo</label>
-                    <input asp-for="StockMin" type="number" class="form-control" />
+                    <input id="StockMin" type="number" class="form-control" />
                 </div>
 
-                <!-- Categoría -->
                 <div class="col-md-6">
                     <label class="form-label">Categoría</label>
                     <div class="input-group">
@@ -152,45 +146,34 @@
                             m => m.CategoryId,
                                                         (SelectList)ViewBag.Categories,
                                                         "-- Seleccione --",
-                                                        new { @class = "form-select select2 w-100" }
+                                                        new { @class = "form-select select2 w-100", id = "CategoryId" }
                                                         )
                         </div>
-                        <button type="button"
-                                class="btn btn-plus"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalCategoria">
-                            +
-                        </button>
+                        <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#modalCategoria">+</button>
                     </div>
                 </div>
 
-
-                <!-- Marca -->
                 <div class="col-md-6">
                     <label class="form-label">Marca</label>
                     <div class="input-group">
                         <div class="flex-fill">
-                            <select asp-for="BrandId"
-                                    asp-items="@(ViewBag.Brands)"
-                                    class="form-select select2 w-100">
+                            <select id="BrandId" class="form-select select2 w-100">
                                 <option value="">-- Seleccione --</option>
+                                @foreach (var b in ViewBag.Brands)
+                                {
+                                    <option value="@b.Value">@b.Text</option>
+                                }
                             </select>
                         </div>
-                        <button type="button"
-                                class="btn btn-plus"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalMarca">
-                            +
-                        </button>
+                        <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#modalMarca">+</button>
                     </div>
                 </div>
 
             </div>
 
-                <!-- Boton guardar -->
-                <div class="mt-5 d-flex justify-content-end">
-                    <button class="btn btn-main">Guardar</button>
-                </div>
+            <div class="mt-5 d-flex justify-content-end">
+                <button type="submit" class="btn btn-main">Guardar</button>
+            </div>
 
         </form>
 
@@ -253,111 +236,94 @@
 <!---------------------------------------------------------------------->
 
 @section Scripts {
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    <!-- jQuery Validation -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
 
     <script>
         $(document).ready(function () {
 
             // Select2
-            $('.select2').select2({
-                placeholder: "-- Seleccione --",
-                allowClear: true,
-                width: '100%'
-            });
+            $('.select2').select2({ placeholder: "-- Seleccione --", allowClear: true, width: '100%' });
 
             // Guardar categoría por AJAX
             $("#btnSaveCategory").on("click", function () {
                 let name = $("#newCategoryName").val().trim();
-                $("#categoryError").addClass("d-none").text("");
-
-                if (name === "") {
-                    $("#categoryError")
-                        .removeClass("d-none")
-                        .text("El nombre es obligatorio");
-                    return;
-                }
-
+                if (!name) { $("#categoryError").removeClass("d-none").text("El nombre es obligatorio"); return; }
                 $.ajax({
                     url: "/AdminCategories/CreateFromAjax",
                     type: "POST",
                     contentType: "application/json",
-                    data: JSON.stringify({
-                        categoryName: name,
-                        status: "Activo"
-                    }),
+                    data: JSON.stringify({ categoryName: name, status: "Activo" }),
                     success: function (resp) {
                         let option = new Option(resp.categoryName, resp.id, true, true);
                         $("#CategoryId").append(option).trigger("change");
-
                         $("#modalCategoria").modal("hide");
                         $("#newCategoryName").val("");
                     },
-                    error: function (xhr) {
-                        console.error(xhr.responseText);
-
-                        $("#categoryError")
-                            .removeClass("d-none")
-                            .text(xhr.responseText || "Error al crear la categoría");
-                    }
+                    error: function (xhr) { $("#categoryError").removeClass("d-none").text(xhr.responseText || "Error al crear la categoría"); }
                 });
             });
 
-                    // Guardar marca por AJAX
-        $("#btnSaveBrand").on("click", function () {
-            let name = $("#newBrandName").val().trim();
-            $("#brandError").addClass("d-none").text("");
-
-            if (name === "") {
-                $("#brandError")
-                    .removeClass("d-none")
-                    .text("El nombre es obligatorio");
-                return;
-            }
-
-            $.ajax({
-                url: "/AdminBrands/CreateFromAjax",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    brandName: name,
-                    status: "Activo"
-                }),
-                success: function (resp) {
-                    let option = new Option(resp.brandName, resp.id, true, true);
-                    $("#BrandId").append(option).trigger("change");
-
-                    $("#modalMarca").modal("hide");
-                    $("#newBrandName").val("");
-                },
-                error: function (xhr) {
-                    $("#brandError")
-                        .removeClass("d-none")
-                        .text(xhr.responseText || "Error al crear la marca");
-                }
+            // Guardar marca por AJAX
+            $("#btnSaveBrand").on("click", function () {
+                let name = $("#newBrandName").val().trim();
+                if (!name) { $("#brandError").removeClass("d-none").text("El nombre es obligatorio"); return; }
+                $.ajax({
+                    url: "/AdminBrands/CreateFromAjax",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ brandName: name, status: "Activo" }),
+                    success: function (resp) {
+                        let option = new Option(resp.brandName, resp.id, true, true);
+                        $("#BrandId").append(option).trigger("change");
+                        $("#modalMarca").modal("hide");
+                        $("#newBrandName").val("");
+                    },
+                    error: function (xhr) { $("#brandError").removeClass("d-none").text(xhr.responseText || "Error al crear la marca"); }
+                });
             });
-        });
 
+            // ENVÍO DEL FORMULARIO DIRECTO A LA API
+            $("#productForm").on("submit", async function (e) {
+                e.preventDefault();
 
-            // Validación del formulario producto
-            $("#productForm").validate({
-                rules: {
-                    ProductName: "required",
-                    UnitPrice: { required: true, number: true, min: 0 },
-                    CostPrice: { required: true, number: true, min: 0 },
-                    CurrentStock: { required: true, number: true, min: 0 },
-                    StockMin: { required: true, number: true, min: 0 },
-                    UnitOfMeasure: "required",
-                    CategoryId: "required",
-                    BrandId: "required"
+                const token = localStorage.getItem("token");
+                if (!token) { alert("No tienes token. Debes iniciar sesión."); return; }
+
+                const payload = {
+                    ProductName: $("#ProductName").val(),
+                    Barcode: $("#Barcode").val(),
+                    ProductDescription: $("#ProductDescription").val(),
+                    UnitPrice: parseFloat($("#UnitPrice").val()),
+                    StockMin: parseInt($("#StockMin").val()),
+                    CategoryId: $("#CategoryId").val(),
+                    BrandId: $("#BrandId").val()
+                };
+
+                try {
+                    const res = await fetch("/api/Product", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await res.json();
+
+                    if (!res.ok) {
+                        alert(data.message || "Error al crear el producto");
+                        return;
+                    }
+
+                    alert("Producto creado exitosamente!");
+                    window.location.href = "/AdminProducts";
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Error de conexión con la API");
                 }
             });
 

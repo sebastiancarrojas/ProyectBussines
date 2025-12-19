@@ -1,25 +1,26 @@
 ﻿namespace PersonalProyect.Core
 {
-
     public class Response<T>
     {
         public bool IsSuccess { get; set; }
         public string? Message { get; set; }
         public List<string> Errors { get; set; } = new();
         public T? Result { get; set; }
+        public Exception? Exception { get; set; }  // <-- agregado
 
-        public static Response<T> Failure(Exception ex, string message = "Ha ocurrido un error al generar al solicitud")
+        public static Response<T> Failure(Exception? ex, string message = "Ha ocurrido un error al generar la solicitud")
         {
             return new Response<T>
             {
                 IsSuccess = false,
                 Message = message,
-                Errors = new List<string>
-                {
-                    ex.Message,
-                }
+                Errors = ex != null
+                    ? new List<string> { ex.Message }
+                    : new List<string> { message },
+                Exception = ex
             };
         }
+
 
         public static Response<T> Failure(string message, List<string>? errors = null)
         {
@@ -28,6 +29,7 @@
                 IsSuccess = false,
                 Message = message,
                 Errors = errors ?? new List<string>(),
+                Exception = null
             };
         }
 
@@ -38,6 +40,7 @@
                 IsSuccess = true,
                 Message = message,
                 Result = result,
+                Exception = null
             };
         }
 
@@ -47,6 +50,7 @@
             {
                 IsSuccess = true,
                 Message = message,
+                Exception = null
             };
         }
     }

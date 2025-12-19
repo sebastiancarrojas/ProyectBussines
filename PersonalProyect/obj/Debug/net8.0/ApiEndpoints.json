@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "PersonalProyect.Controllers.Api.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "PersonalProyect.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PersonalProyect.Controllers.Api.BrandController",
     "Method": "Create",
     "RelativePath": "api/Brand",
@@ -119,48 +135,6 @@
     "Method": "Delete",
     "RelativePath": "api/Customer/{id}",
     "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.PaymentController",
-    "Method": "Create",
-    "RelativePath": "api/Payment",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "PersonalProyect.DTOs.PaymentDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.PaymentController",
-    "Method": "GetAll",
-    "RelativePath": "api/Payment",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.PaymentController",
-    "Method": "GetOne",
-    "RelativePath": "api/Payment/{id}",
-    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -303,6 +277,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PersonalProyect.Controllers.Api.ProductController",
+    "Method": "SearchForSale",
+    "RelativePath": "api/Product/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "term",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "PersonalProyect.Controllers.Api.SaleController",
     "Method": "Create",
     "RelativePath": "api/Sale",
@@ -312,7 +302,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "PersonalProyect.DTOs.SaleDTO",
+        "Type": "PersonalProyect.DTOs.Sales.CreateSaleDTO",
         "IsRequired": true
       }
     ],
@@ -320,8 +310,8 @@
   },
   {
     "ContainingType": "PersonalProyect.Controllers.Api.SaleController",
-    "Method": "GetAll",
-    "RelativePath": "api/Sale",
+    "Method": "DebugUser",
+    "RelativePath": "api/Sale/debug",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -330,95 +320,36 @@
   },
   {
     "ContainingType": "PersonalProyect.Controllers.Api.SaleController",
-    "Method": "GetOne",
-    "RelativePath": "api/Sale/{id}",
+    "Method": "GetPaginated",
+    "RelativePath": "api/Sale/paginated",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
-    "Method": "Create",
-    "RelativePath": "api/SaleDetail",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "PersonalProyect.DTOs.SaleDetailDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
-    "Method": "GetAll",
-    "RelativePath": "api/SaleDetail",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
-    "Method": "Update",
-    "RelativePath": "api/SaleDetail/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
+        "Name": "StartDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       },
       {
-        "Name": "dto",
-        "Type": "PersonalProyect.DTOs.SaleDetailDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
-    "Method": "Delete",
-    "RelativePath": "api/SaleDetail/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "Name": "EndDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
       {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
-    "Method": "GetOne",
-    "RelativePath": "api/SaleDetail/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "Name": "Filter",
+        "Type": "System.String",
+        "IsRequired": false
+      },
       {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RecordsPerPage",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

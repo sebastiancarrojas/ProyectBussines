@@ -37,29 +37,6 @@ namespace PersonalProyect.Controllers
             return View();
         }
 
-        // Maneja el proceso de login
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginDTO dto)
-        {
-            // Verifica si el modelo es válido
-            if (ModelState.IsValid)
-            {
-                // Llama al servicio de usuario para autenticar
-                Response<Microsoft.AspNetCore.Identity.SignInResult> result = await _userService.LoginAsync(dto);
-
-                // Si el login es exitoso, redirige al home
-                if (result.IsSuccess)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                // Si el login falla, muestra un error genérico
-                ModelState.AddModelError(string.Empty, "Email o contraseña incorrectas");
-            }
-            // Si el modelo no es válido o el login falla, vuelve a mostrar la vista con el DTO
-            return View(dto);
-        }
-
 
         // Este método devuelve un JSON con información del usuario actual
         // Mostrando si está autenticado, su nombre y todos los claims asociados

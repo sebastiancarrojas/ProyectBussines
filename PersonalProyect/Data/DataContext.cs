@@ -22,7 +22,6 @@ namespace PersonalProyect.Data
         public DbSet<Entities.Product> Products { get; set; }
         public DbSet<Entities.Sale> Sales { get; set; }
         public DbSet<Entities.SaleDetail> SalesDetails { get; set; }
-        public DbSet<Entities.Payment> Payments { get; set; }
         public DbSet<Entities.Permission> Permissions { get; set; }
         public DbSet<Entities.Role> Roles { get; set; }
         public DbSet<Entities.RolePermission> RolePermissions { get; set; }
@@ -33,6 +32,15 @@ namespace PersonalProyect.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // 🔹 Secuencia para SaleNumber
+            modelBuilder
+                .HasSequence<long>("SaleNumberSequence")
+                .StartsAt(1)
+                .IncrementsBy(1);
+
+            modelBuilder.Entity<Sale>()
+                .Property(s => s.SaleNumber)
+                .HasDefaultValueSql("NEXT VALUE FOR SaleNumberSequence");
             // ConfigureIndexes(builder);
             ConfigureKeys(modelBuilder);
             base.OnModelCreating(modelBuilder);
@@ -89,12 +97,6 @@ namespace PersonalProyect.Data
                 .HasMany(c => c.Sales)
                 .WithOne(s => s.Customers)
                 .HasForeignKey(s => s.CustomerId);
-
-            // Relación Sale -> Payments
-            modelBuilder.Entity<Sale>()
-                .HasMany(s => s.Payments)
-                .WithOne(p => p.Sales)
-                .HasForeignKey(p => p.SaleId);
 
             // Relación RolePermission (PK compuesta)
             modelBuilder.Entity<RolePermission>()

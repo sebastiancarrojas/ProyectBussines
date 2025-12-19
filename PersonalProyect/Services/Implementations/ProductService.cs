@@ -38,7 +38,6 @@ namespace PersonalProyect.Services.Implementations
 
                 var resultDto = _mapper.Map<ProductCreateDTO>(entity);
 
-                // ✅ Aquí marcamos la operación como exitosa
                 return Response<ProductCreateDTO>.Success(resultDto, "Producto creado correctamente");
             }
             catch (Exception ex)
@@ -140,15 +139,11 @@ namespace PersonalProyect.Services.Implementations
             }
         }
 
-
-
-
         // --------------------
         // -- Lista paginada --
         // --------------------
 
-        public async Task<Response<PaginationResponse<ProductListDTO>>>
-            GetPaginatedListAsync(ProductPaginationRequest request)
+        public async Task<Response<PaginationResponse<ProductListDTO>>> GetPaginatedListAsync(ProductPaginationRequest request)
         {
             var queryable = _context.Products
                 .Include(p => p.Brands)
@@ -201,5 +196,34 @@ namespace PersonalProyect.Services.Implementations
                 dtoQueryable
             );
         }
+        // ----------------------------------------
+        // -- Buscar producto en registrar venta --
+        // ----------------------------------------
+
+        public async Task<Response<List<ProductSearchDTO>>> SearchForSaleAsync(string term)
+        {
+            if (string.IsNullOrWhiteSpace(term))
+                return Response<List<ProductSearchDTO>>.Success(new List<ProductSearchDTO>());
+
+            var products = await _context.Products
+                .Where(p =>
+                    p.Status == "Activo" &&
+                    (p.ProductName.Contains(term) ||
+                     p.Barcode.Contains(term)))
+                .OrderBy(p => p.ProductName)
+                .Take(10)
+                .Select(p => new ProductSearchDTO
+                {
+                    Id = p.Id,
+                    ProductName = p.ProductName,
+                    Barcode = p.Barcode,
+                    UnitPrice = p.UnitPrice,
+                    CurrentStock = p.CurrentStock
+                })
+                .ToListAsync();
+
+            return Response<List<ProductSearchDTO>>.Success(products);
+        }
+
     }
 }

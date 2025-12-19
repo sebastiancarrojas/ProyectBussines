@@ -1,0 +1,511 @@
+﻿<style>
+    body {
+        background-color: #eef1f4;
+    }
+
+    /* Card principal */
+    .sale-card {
+        max-width: 1200px;
+        margin: 2rem auto;
+        border-radius: 20px;
+        background-color: #f8f9fa;
+        box-shadow: 0 20px 40px rgba(0,0,0,.08);
+        border: 1px solid #e3e6ea;
+    }
+
+    /* Inputs */
+    .form-control {
+        border-radius: 12px;
+    }
+
+        .form-control:focus {
+            border-color: #393d42;
+            box-shadow: 0 0 0 .15rem rgba(57,61,66,.25);
+        }
+
+    /* Botón principal */
+    .btn-main {
+        background-color: #393d42;
+        color: #fff;
+        border-radius: 20px;
+        padding: .55rem 1.8rem;
+    }
+
+        .btn-main:hover {
+            background-color: #2f3338;
+            color: #fff;
+        }
+
+    /* Botón secundario */
+    .btn-outline-main {
+        border-radius: 20px;
+        border: 1px solid #393d42;
+        color: #393d42;
+    }
+
+        .btn-outline-main:hover {
+            background-color: #393d42;
+            color: #fff;
+        }
+
+    /* Resultados búsqueda */
+    #productResults {
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+        #productResults .list-group-item {
+            cursor: pointer;
+        }
+
+            #productResults .list-group-item:hover {
+                background-color: rgba(57,61,66,.05);
+            }
+
+    /* Tabla */
+    .table thead {
+        background-color: #393d42;
+        color: #fff;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
+
+    /* Total */
+    .sale-total {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+</style>
+
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Registrar venta";
+}
+
+<div class="card sale-card">
+    <div class="card-body p-4">
+
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h4 class="mb-0">Registrar venta</h4>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="fw-semibold">
+                    Fecha: <span id="currentDate"></span>
+                </div>
+
+                <a href="/AdminSales" class="btn btn-outline-main">
+                    Volver
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ===================== BLOQUE SUPERIOR (PRODUCTO) ===================== -->
+        <div class="card p-3 mb-3">
+
+            <div class="row g-3 align-items-end">
+
+                <!-- Producto -->
+                <div class="col-md-5 position-relative">
+                    <label class="form-label fw-semibold">Seleccione producto</label>
+                    <input type="text"
+                           id="productSearch"
+                           class="form-control"
+                           placeholder="Buscar por nombre o código"
+                           autocomplete="off" />
+
+                    <div id="productResults"
+                         class="list-group position-absolute w-100 shadow"
+                         style="z-index:1050; display:none;"></div>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Cantidad</label>
+                    <input type="number"
+                           id="quantityInput"
+                           class="form-control"
+                           min="1"
+                           value="1" />
+                </div>
+
+                <!-- Precio -->
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Precio del producto:</label>
+                    <div class="fw-semibold fs-5">
+                        <span id="unitPrice">0</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================== BOTONES (LIMPIAR / AÑADIR) ===================== -->
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button id="clearBtn" class="btn btn-outline-main px-5">
+                Limpiar
+            </button>
+
+            <button id="addProductBtn"
+                    class="btn btn-main px-5"
+                    disabled>
+                Añadir
+            </button>
+        </div>
+
+        <!-- ===================== BLOQUE INFERIOR (LISTA) ===================== -->
+        <div class="card p-3">
+
+            <h6 class="text-center mb-3 fw-semibold">
+                Lista de productos
+            </h6>
+
+            <div class="table-responsive mb-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th class="text-center">Cantidad</th>
+                            <th class="text-end">Precio Unitario</th>
+                            <th class="text-end">Subtotal</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="saleTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="sale-total">
+                    Total: <span id="totalAmount">$0</span>
+                </div>
+
+                <button id="saveSaleBtn" class="btn btn-main">
+                    Registrar venta
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    /* ======================================================
+       AUTH FETCH
+    ====================================================== */
+    window.authFetch = async (url, options = {}) => {
+        const token = localStorage.getItem("token");
+
+        return fetch(url, {
+            ...options,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+                ...(options.headers || {})
+            }
+        });
+    };
+
+    (() => {
+
+        const API_PRODUCT = '/api/Product';
+        const API_SALE = '/api/Sale';
+
+        /* ===============================
+           ELEMENTOS DOM
+        =============================== */
+        const input = document.getElementById('productSearch');
+        const results = document.getElementById('productResults');
+        const quantityInput = document.getElementById('quantityInput');
+        const addProductBtn = document.getElementById('addProductBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const saveSaleBtn = document.getElementById('saveSaleBtn');
+
+        const saleTableBody = document.getElementById('saleTableBody');
+        const totalAmount = document.getElementById('totalAmount');
+        const unitPriceLabel = document.getElementById('unitPrice');
+        const dateLabel = document.getElementById('currentDate');
+
+        let controller = null;
+        let selectedProduct = null;
+        let total = 0;
+
+        const saleDetails = [];
+
+        /* ===============================
+           FECHA ACTUAL
+        =============================== */
+        if (dateLabel) {
+            dateLabel.textContent = new Date().toLocaleDateString();
+        }
+
+        /* ===============================
+           🔎 BUSCAR PRODUCTO
+        =============================== */
+        input.addEventListener('input', async () => {
+            const term = input.value.trim();
+
+            if (term.length < 2) {
+                clearResults();
+                return;
+            }
+
+            if (controller) controller.abort();
+            controller = new AbortController();
+
+            try {
+                const response = await authFetch(
+                    `${API_PRODUCT}/search?term=${encodeURIComponent(term)}`,
+                    { signal: controller.signal }
+                );
+
+                if (!response.ok) return clearResults();
+
+                const json = await response.json();
+                if (!json.isSuccess || !json.result?.length) return clearResults();
+
+                renderResults(json.result);
+
+            } catch (err) {
+                if (err.name !== 'AbortError') console.error(err);
+            }
+        });
+
+        /* ===============================
+           RENDER RESULTADOS
+        =============================== */
+        function renderResults(products) {
+            results.innerHTML = '';
+
+            products.forEach(p => {
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'list-group-item list-group-item-action';
+
+                item.innerHTML = `
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <strong>${p.productName}</strong><br/>
+                            <small>${p.barcode}</small>
+                        </div>
+                        <div class="text-end">
+                            <div>$${p.unitPrice}</div>
+                            <small>Stock: ${p.currentStock}</small>
+                        </div>
+                    </div>
+                `;
+
+                item.onclick = () => selectProduct(p);
+                results.appendChild(item);
+            });
+
+            results.style.display = 'block';
+        }
+
+        /* ===============================
+           SELECCIONAR PRODUCTO
+        =============================== */
+        function selectProduct(product) {
+            selectedProduct = product;
+
+            input.value = product.productName;
+            unitPriceLabel.textContent = product.unitPrice;
+
+            results.style.display = 'none';
+            addProductBtn.disabled = false;
+        }
+
+        /* ===============================
+           Eliminar PRODUCTO
+        =============================== */
+        function removeProduct(index, row) {
+            const removed = saleDetails[index];
+
+            if (!removed) return;
+
+            total -= removed.subtotal;
+            saleDetails.splice(index, 1);
+            row.remove();
+
+            updateTotal();
+            reindexRows();
+        }
+
+        function reindexRows() {
+            [...saleTableBody.children].forEach((row, newIndex) => {
+                row.setAttribute('data-index', newIndex);
+                row.querySelector('button').onclick = () => {
+                    removeProduct(newIndex, row);
+                };
+            });
+        }
+
+
+        /* ===============================
+           ➕ AÑADIR PRODUCTO
+        =============================== */
+    addProductBtn.addEventListener('click', () => {
+        if (!selectedProduct) return;
+
+        const quantity = parseInt(quantityInput.value);
+        if (quantity <= 0) {
+            alert('Cantidad inválida');
+            return;
+        }
+
+        const subtotal = quantity * selectedProduct.unitPrice;
+
+        const detail = {
+            productId: selectedProduct.id,
+            quantity,
+            unitPrice: selectedProduct.unitPrice,
+            subtotal
+        };
+
+        saleDetails.push(detail);
+        total += subtotal;
+
+        const rowIndex = saleDetails.length - 1;
+
+        const row = document.createElement('tr');
+        row.setAttribute('data-index', rowIndex);
+
+        row.innerHTML = `
+            <td>${selectedProduct.barcode}</td>
+            <td>${selectedProduct.productName}</td>
+            <td class="text-center">
+                <input type="number"
+                       class="form-control form-control-sm text-center quantity-input"
+                       min="1"
+                       value="${quantity}" />
+            </td>
+            <td class="text-end">$${selectedProduct.unitPrice}</td>
+            <td class="text-end subtotal-cell">$${subtotal}</td>
+            <td class="text-center">
+                <button class="btn btn-sm btn-danger">
+                    ✕
+                </button>
+            </td>
+        `;
+
+        const quantityInputRow = row.querySelector('.quantity-input');
+
+        quantityInputRow.addEventListener('blur', () => {
+
+            let newQty = parseInt(quantityInputRow.value);
+
+        if (isNaN(newQty) || newQty <= 0) {
+            newQty = 1;
+            quantityInputRow.value = 1;
+        }
+
+
+            const index = parseInt(row.getAttribute('data-index'));
+            const detail = saleDetails[index];
+
+            // Restar subtotal anterior
+            total -= detail.subtotal;
+
+            // Recalcular valores
+            detail.quantity = newQty;
+            detail.subtotal = newQty * detail.unitPrice;
+
+            // Actualizar subtotal visual
+            row.querySelector('.subtotal-cell').textContent = `$${detail.subtotal}`;
+
+            // Sumar nuevo subtotal
+            total += detail.subtotal;
+
+            updateTotal();
+        });
+
+
+        row.querySelector('button').onclick = () => {
+            const index = parseInt(row.getAttribute('data-index'));
+            removeProduct(index, row);
+        };
+
+
+        saleTableBody.appendChild(row);
+        updateTotal();
+        resetSelection();
+    });
+
+
+        /* ===============================
+           TOTAL
+        =============================== */
+        function updateTotal() {
+            totalAmount.textContent = `$${total}`;
+        }
+
+        /* ===============================
+           🧹 LIMPIAR
+        =============================== */
+        clearBtn.addEventListener('click', () => {
+            resetSelection();
+        });
+
+        /* ===============================
+           💾 REGISTRAR VENTA
+        =============================== */
+        saveSaleBtn.addEventListener('click', async () => {
+
+            if (saleDetails.length === 0) {
+                alert('Agrega al menos un producto');
+                return;
+            }
+
+            const dto = {
+                customerId: "9E667273-33D8-4F5D-83B7-CB76E3653926",
+                details: saleDetails
+            };
+
+            try {
+                const response = await authFetch(API_SALE, {
+                    method: 'POST',
+                    body: JSON.stringify(dto)
+                });
+
+                if (!response.ok) {
+                    alert('Error al registrar la venta');
+                    return;
+                }
+
+                alert('Venta registrada correctamente');
+                window.location.reload();
+
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión');
+            }
+        });
+
+        /* ===============================
+           UTILIDADES
+        =============================== */
+        function clearResults() {
+            results.innerHTML = '';
+            results.style.display = 'none';
+        }
+
+        function resetSelection() {
+            selectedProduct = null;
+            input.value = '';
+            quantityInput.value = 1;
+            unitPriceLabel.textContent = '0';
+            addProductBtn.disabled = true;
+            clearResults();
+        }
+
+    })();
+</script>
+

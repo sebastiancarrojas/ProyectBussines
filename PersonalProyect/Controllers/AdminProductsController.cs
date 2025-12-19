@@ -56,16 +56,28 @@ public class AdminProductsController : Controller
             return View(dto);
         }
 
+        // 🔹 En vez de Session, recibe token desde header, cookie, o config temporal
+        var token = "AQUÍ_TU_TOKEN_JWT"; // Temporal: puedes pegar un token válido para pruebas
+
+        if (!string.IsNullOrEmpty(token))
+        {
+            _http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        }
+
         var result = await _http.PostAsJsonAsync("api/Product", dto);
+
         if (!result.IsSuccessStatusCode)
         {
             ModelState.AddModelError("", "Error al crear el producto");
-            await LoadSelects(); 
+            await LoadSelects();
             return View(dto);
         }
 
         return RedirectToAction("Index");
     }
+
+
 
 
 
@@ -103,11 +115,11 @@ public class AdminProductsController : Controller
 
 
 
-// ---------------------------
-// -- Renderizar vista Edit --
-// ---------------------------
+    // ---------------------------
+    // -- Renderizar vista Edit --
+    // ---------------------------
 
-public async Task<IActionResult> Edit(Guid id)
+    public async Task<IActionResult> Edit(Guid id)
     {
         var response = await _http.GetFromJsonAsync<Response<ProductCreateDTO>>($"api/Product/{id}");
         return View(response?.Result);

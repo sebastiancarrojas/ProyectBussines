@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 using PersonalProyect.Core;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
 using PersonalProyect.Services.Abtractions;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace PersonalProyect.Services.Implementations
 {
@@ -14,15 +17,17 @@ namespace PersonalProyect.Services.Implementations
     {
         // Inyectar dependencias necesarias
         private readonly DataContext _Data;
+        private readonly IConfiguration _Configuration;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public UserService(DataContext dataContext, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor)
+        public UserService(DataContext dataContext, UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
         {
             _Data = dataContext;
             _userManager = userManager;
             _signInManager = signInManager;
             _httpContextAccessor = httpContextAccessor;
+            _Configuration = configuration;
         }
 
         // Crear un usuario nuevo usando ASP.NET Identity
@@ -63,17 +68,48 @@ namespace PersonalProyect.Services.Implementations
         }
 
         // Iniciar sesión de un usuario usando email y contraseña
-        public async Task<Response<SignInResult>> LoginAsync(LoginDTO dto)
+        // Iniciar sesión de un usuario usando email y contraseña
+        public async Task<Response<string>> LoginWithTokenAsync(LoginDTO dto)
         {
-            // Usar SignInManager para intentar iniciar sesión con el email y contraseña proporcionados
-            SignInResult result = await _signInManager.PasswordSignInAsync(dto.Email, dto.Password, false, false);
-            // Retornar una respuesta indicando el éxito o fracaso de la operación
-            return new Response<SignInResult>
-            {
-                Result = result,
-                IsSuccess = result.Succeeded
-            };
+            // 1️⃣ Validar email y contraseña
+            var user = await _userManager.FindByEmailAsync(dto.Email);
+            if (user == null)
+                return Response<string>.Failure(null, "Usuario o contraseña incorrecta");
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, false);
+            if (!result.Succeeded)
+                return Response<string>.Failure(null, "Usuario o contraseña incorrecta");
+
+            // 2️⃣ Generar el token JWT
+            var token = GenerateJwtToken(user);
+
+            // 3️⃣ Retornar token
+            return Response<string>.Success(token, "Login exitoso");
         }
+
+        private string GenerateJwtToken(User user)
+        {
+            var claims = new[]
+            {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _Configuration["Jwt:Issuer"],
+                audience: _Configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(2),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
 
         // Cerrar sesión del usuario actual
         public async Task LogoutAsync()

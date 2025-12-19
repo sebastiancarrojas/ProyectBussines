@@ -1,12 +1,12 @@
-﻿using PersonalProyect.DTOs;
-using PersonalProyect.Core;
+﻿using PersonalProyect.Core;
+using PersonalProyect.Core.Pagination;
+using PersonalProyect.DTOs.Sales;
 
 namespace PersonalProyect.Services.Abtractions
 {
     public interface ISaleService
     {
-        public Task<Response<SaleDTO>> CreateAsync(SaleDTO dto);
-        public Task<Response<SaleDTO>> GetOneAsync(Guid id);
-        public Task<Response<List<SaleDTO>>> GetCompleteListAsync();
+        public Task<Response<Guid>> CreateAsync(CreateSaleDTO dto, Guid userId);
+        public Task<Response<PaginationResponse<SaleListDTO>>> GetPaginatedListAsync(SalePaginationRequest request);
     }
 }
