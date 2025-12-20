@@ -32,6 +32,16 @@ namespace PersonalProyect.Services.Implementations
         {
             try
             {
+                var exists = await _context.Products
+                    .AnyAsync(p => p.Barcode == dto.Barcode);
+
+                if (exists)
+                {
+                    return Response<ProductCreateDTO>.Failure(
+                        "Ya existe un producto con ese código de barras"
+                    );
+                }
+
                 var entity = _mapper.Map<Product>(dto);
                 _context.Products.Add(entity);
                 await _context.SaveChangesAsync();

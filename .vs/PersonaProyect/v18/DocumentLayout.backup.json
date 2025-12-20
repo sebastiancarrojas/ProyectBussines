@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Repositorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\implementations\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\saleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\controllers\\api\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\controllers\\api\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-19T22:33:58.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-19T22:33:48.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "PersonalProyect\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAAFcAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-19T22:32:57.027Z",
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Controllers\\Api\\ProductController.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Controllers\\Api\\ProductController.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Controllers\\Api\\ProductController.cs",
+              "RelativeToolTip": "PersonalProyect\\Controllers\\Api\\ProductController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T02:18:42.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminSales\\Register.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml*",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminSales\\Register.cshtml*",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAGUAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-19T20:03:40.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SaleService.cs",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\SaleService.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\SaleService.cs",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\SaleService.cs",
-              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\SaleService.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJIAAABZAAAAAAAAAA==",
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\ProductService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\ProductService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\ProductService.cs*",
+              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\ProductService.cs*",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAACwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-19T18:39:59.797Z",
+              "WhenOpened": "2025-12-20T02:17:44.96Z",
               "EditorCaption": ""
             }
           ]

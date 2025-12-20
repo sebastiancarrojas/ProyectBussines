@@ -1,19 +1,15 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\Images\Products\0f5bb4d2-c4ff-4708-aa6c-5ea34b1332f7.jpg
-wwwroot\Images\Products\23e4c49e-b912-4836-9fb6-976fecae6c07.jpg
 wwwroot\Images\Products\3fe8e51a-f5ec-4940-b5a3-8a42bcc77234.jpg
 wwwroot\Images\Products\6089187b-4ece-408d-b17b-9d07df56104a.png
-wwwroot\Images\Products\6f169baf-6556-4c91-8ef9-bcf0dc28dc2d.jpg
 wwwroot\Images\Products\7fefbac4-08df-4170-969d-42f57e6143f9.jpg
 wwwroot\Images\Products\8f2628f7-2752-4bad-9b8b-f8b303f8af5d.jpg
 wwwroot\Images\Products\90b1a7dc-dac8-41ab-910b-27c3bc653f67.jpg
 wwwroot\Images\Products\96b3626d-4e4b-4c57-a03c-64b8bd0e49df.jpg
-wwwroot\Images\Products\9d7ed0dd-e3cb-4d75-af21-aac7e92b8cd8.jpg
 wwwroot\Images\Products\a008659f-80c0-4ef2-811f-85ba73d7f50e.png
 wwwroot\Images\Products\a4e8b3da-a971-4415-82de-99df8da29a91.jpg
 wwwroot\Images\Products\a7ec5c97-5541-44dd-b17a-86d4507f02fc.jpg
-wwwroot\Images\Products\ab61fef4-1848-4c51-91a9-50db4129dc87.jpg
 wwwroot\Images\Products\bacaa4db-4694-4be8-9b54-fbe8c0eda492.jpg
 wwwroot\Images\Products\be9a3386-ff5a-4e05-be4a-2c06ec1e7015.jpg
 wwwroot\Images\Products\d73e171a-8ba5-4183-8a50-f22251894671.jpg
@@ -77,3 +73,7 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\Images\Products\9d7ed0dd-e3cb-4d75-af21-aac7e92b8cd8.jpg
+wwwroot\Images\Products\ab61fef4-1848-4c51-91a9-50db4129dc87.jpg
+wwwroot\Images\Products\23e4c49e-b912-4836-9fb6-976fecae6c07.jpg
+wwwroot\Images\Products\6f169baf-6556-4c91-8ef9-bcf0dc28dc2d.jpg
