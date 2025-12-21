@@ -29,21 +29,26 @@ namespace PersonalProyect.Services.Implementations
 
             try
             {
-                // 1️⃣ Validaciones básicas
+                // Validaciones básicas
                 if (dto.Details == null || !dto.Details.Any())
                     return Response<Guid>.Failure(null, "La venta no tiene productos");
 
-                // 2️⃣ Obtener productos reales
-                var productIds = dto.Details.Select(d => d.ProductId).ToList();
+                // Obtener productos reales
+                var realProductIds = dto.Details
+                        .Where(d => !d.IsTemporary)
+                        .Select(d => d.ProductId!.Value)
+                        .ToList();
+
 
                 var products = await _context.Products
-                    .Where(p => productIds.Contains(p.Id))
+                    .Where(p => realProductIds.Contains(p.Id))
                     .ToListAsync();
 
-                if (products.Count != productIds.Count)
+                if (products.Count != realProductIds.Count)
                     return Response<Guid>.Failure(null, "Uno o más productos no existen");
 
-                // 3️⃣ Crear venta (cabecera)
+
+                // 3Crear venta (cabecera)
                 var sale = new Sale
                 {
                     Id = Guid.NewGuid(),
@@ -57,13 +62,41 @@ namespace PersonalProyect.Services.Implementations
 
                 decimal total = 0;
 
-                // 4️⃣ Crear detalles
+                // Crear detalles
                 foreach (var item in dto.Details)
                 {
-                    var product = products.First(p => p.Id == item.ProductId);
-
+                    // Validación común
                     if (item.Quantity <= 0)
                         return Response<Guid>.Failure(null, "Cantidad inválida");
+
+                    // PRODUCTO TEMPORAL
+                    if (item.IsTemporary)
+                    {
+                        if (string.IsNullOrWhiteSpace(item.ProductName))
+                            return Response<Guid>.Failure(null, "Nombre del producto temporal requerido");
+
+                        if (item.UnitPrice <= 0)
+                            return Response<Guid>.Failure(null, "Precio inválido para producto temporal");
+
+                        var subTotal = item.UnitPrice * item.Quantity;
+                        total += subTotal;
+
+                        sale.SalesDetails.Add(new SaleDetail
+                        {
+                            ProductId = null,
+                            ProductName = item.ProductName,
+                            Quantity = item.Quantity,
+                            UnitPrice = item.UnitPrice,
+                            SubTotal = subTotal,
+                            SaleId = sale.Id,
+                            IsTemporary = true
+                        });
+
+                        continue; // IMPORTANTE
+                    }
+
+                    // PRODUCTO REAL
+                    var product = products.First(p => p.Id == item.ProductId);
 
                     if (product.CurrentStock < item.Quantity)
                         return Response<Guid>.Failure(
@@ -71,28 +104,28 @@ namespace PersonalProyect.Services.Implementations
                             $"Stock insuficiente para {product.ProductName}"
                         );
 
-                    var subTotal = product.UnitPrice * item.Quantity;
-                    total += subTotal;
-
-
+                    var realSubTotal = product.UnitPrice * item.Quantity;
+                    total += realSubTotal;
 
                     sale.SalesDetails.Add(new SaleDetail
                     {
                         ProductId = product.Id,
                         Quantity = item.Quantity,
                         UnitPrice = product.UnitPrice,
-                        SubTotal = subTotal,
+                        SubTotal = realSubTotal,
                         SaleId = sale.Id,
+                        IsTemporary = false
                     });
 
-                    // 5️⃣ Descontar stock
+                    // Descontar stock solo si es producto real
                     product.CurrentStock -= item.Quantity;
                 }
 
-                // 6️⃣ Total
+
+                // Total
                 sale.TotalAmount = total;
 
-                // 7️⃣ Guardar
+                // Guardar
                 _context.Sales.Add(sale);
                 await _context.SaveChangesAsync();
 

@@ -1,9 +1,21 @@
-﻿<style>
+﻿<!---------------------------------------------------------------------->
+<!--------------------------- AdminLayout ------------------------------>
+<!---------------------------------------------------------------------->
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Registrar venta";
+}
+
+<!---------------------------------------------------------------------->
+<!----------------------------- Styles --------------------------------->
+<!---------------------------------------------------------------------->
+
+<style>
     body {
         background-color: #eef1f4;
     }
 
-    /* Card principal */
     .sale-card {
         max-width: 1200px;
         margin: 2rem auto;
@@ -13,7 +25,6 @@
         border: 1px solid #e3e6ea;
     }
 
-    /* Inputs */
     .form-control {
         border-radius: 12px;
     }
@@ -23,7 +34,6 @@
             box-shadow: 0 0 0 .15rem rgba(57,61,66,.25);
         }
 
-    /* Botón principal */
     .btn-main {
         background-color: #393d42;
         color: #fff;
@@ -36,7 +46,6 @@
             color: #fff;
         }
 
-    /* Botón secundario */
     .btn-outline-main {
         border-radius: 20px;
         border: 1px solid #393d42;
@@ -48,7 +57,6 @@
             color: #fff;
         }
 
-    /* Resultados búsqueda */
     #productResults {
         border-radius: 14px;
         overflow: hidden;
@@ -62,7 +70,6 @@
                 background-color: rgba(57,61,66,.05);
             }
 
-    /* Tabla */
     .table thead {
         background-color: #393d42;
         color: #fff;
@@ -73,44 +80,36 @@
         vertical-align: middle;
     }
 
-    /* Total */
     .sale-total {
         font-size: 1.2rem;
         font-weight: 600;
     }
+
 </style>
 
-
-@{
-    Layout = "_AdminLayout";
-    ViewData["Title"] = "Registrar venta";
-}
+<!-------------------------------------------------------------------->
+<!----------------------------- View --------------------------------->
+<!-------------------------------------------------------------------->
 
 <div class="card sale-card">
     <div class="card-body p-4">
 
         <!-- HEADER -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-
             <h4 class="mb-0">Registrar venta</h4>
-
             <div class="d-flex align-items-center gap-3">
                 <div class="fw-semibold">
                     Fecha: <span id="currentDate"></span>
                 </div>
-
                 <a href="/AdminSales" class="btn btn-outline-main">
                     Volver
                 </a>
             </div>
-
         </div>
 
         <!-- ===================== BLOQUE SUPERIOR (PRODUCTO) ===================== -->
         <div class="card p-3 mb-3">
-
             <div class="row g-3 align-items-end">
-
                 <!-- Producto -->
                 <div class="col-md-5 position-relative">
                     <label class="form-label fw-semibold">Seleccione producto</label>
@@ -119,7 +118,6 @@
                            class="form-control"
                            placeholder="Buscar por nombre o código"
                            autocomplete="off" />
-
                     <div id="productResults"
                          class="list-group position-absolute w-100 shadow"
                          style="z-index:1050; display:none;"></div>
@@ -142,7 +140,6 @@
                         <span id="unitPrice">0</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -157,15 +154,22 @@
                     disabled>
                 Añadir
             </button>
+
+            <!-- BOTÓN PARA PRODUCTO TEMPORAL -->
+            <button id="addTempBtn"
+                    class="btn btn-outline-secondary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#tempProductModal"
+                    title="Agregar producto temporal">
+                +
+            </button>
         </div>
 
         <!-- ===================== BLOQUE INFERIOR (LISTA) ===================== -->
         <div class="card p-3">
-
             <h6 class="text-center mb-3 fw-semibold">
                 Lista de productos
             </h6>
-
             <div class="table-responsive mb-3">
                 <table class="table table-bordered">
                     <thead>
@@ -181,21 +185,71 @@
                     <tbody id="saleTableBody"></tbody>
                 </table>
             </div>
-
             <div class="d-flex justify-content-between align-items-center">
                 <div class="sale-total">
                     Total: <span id="totalAmount">$0</span>
                 </div>
-
                 <button id="saveSaleBtn" class="btn btn-main">
                     Registrar venta
                 </button>
             </div>
-
         </div>
-
     </div>
 </div>
+<!---------------------------------------------------------------------->
+<!----------------------------- Modals --------------------------------->
+<!---------------------------------------------------------------------->
+
+<!-- MODAL PARA PRODUCTO TEMPORAL -->
+<div class="modal fade" id="tempProductModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar producto temporal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre del producto</label>
+                    <input type="text"
+                           id="tempProductName"
+                           class="form-control"
+                           placeholder=""
+                           maxlength="100">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Precio unitario</label>
+                    <input type="number"
+                           id="tempUnitPrice"
+                           class="form-control"
+                           min="0.01"
+                           step="0.01"
+                           value="">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Cantidad</label>
+                    <input type="number"
+                           id="tempQuantity"
+                           class="form-control"
+                           min="1"
+                           value="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-main" id="addTempProductBtn">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------------------------------------------------------------------->
+<!----------------------------- Script --------------------------------->
+<!---------------------------------------------------------------------->
 
 <script>
     /* ======================================================
@@ -215,7 +269,6 @@
     };
 
     (() => {
-
         const API_PRODUCT = '/api/Product';
         const API_SALE = '/api/Sale';
 
@@ -228,16 +281,24 @@
         const addProductBtn = document.getElementById('addProductBtn');
         const clearBtn = document.getElementById('clearBtn');
         const saveSaleBtn = document.getElementById('saveSaleBtn');
-
         const saleTableBody = document.getElementById('saleTableBody');
         const totalAmount = document.getElementById('totalAmount');
         const unitPriceLabel = document.getElementById('unitPrice');
         const dateLabel = document.getElementById('currentDate');
 
+        /* ===============================
+           ELEMENTOS PARA PRODUCTOS TEMPORALES
+        =============================== */
+        const addTempBtn = document.getElementById('addTempBtn');
+        const tempProductModal = document.getElementById('tempProductModal');
+        const tempProductName = document.getElementById('tempProductName');
+        const tempUnitPrice = document.getElementById('tempUnitPrice');
+        const tempQuantity = document.getElementById('tempQuantity');
+        const addTempProductBtn = document.getElementById('addTempProductBtn');
+
         let controller = null;
         let selectedProduct = null;
         let total = 0;
-
         const saleDetails = [];
 
         /* ===============================
@@ -248,7 +309,7 @@
         }
 
         /* ===============================
-           🔎 BUSCAR PRODUCTO
+           BUSCAR PRODUCTO
         =============================== */
         input.addEventListener('input', async () => {
             const term = input.value.trim();
@@ -297,7 +358,8 @@
                             <small>${p.barcode}</small>
                         </div>
                         <div class="text-end">
-                            <div>$${p.unitPrice}</div>
+                            <div>${formatCOP(p.unitPrice)}</div>
+
                             <small>Stock: ${p.currentStock}</small>
                         </div>
                     </div>
@@ -315,10 +377,8 @@
         =============================== */
         function selectProduct(product) {
             selectedProduct = product;
-
             input.value = product.productName;
-            unitPriceLabel.textContent = product.unitPrice;
-
+            unitPriceLabel.textContent = formatCOP(product.unitPrice);
             results.style.display = 'none';
             addProductBtn.disabled = false;
         }
@@ -328,7 +388,6 @@
         =============================== */
         function removeProduct(index, row) {
             const removed = saleDetails[index];
-
             if (!removed) return;
 
             total -= removed.subtotal;
@@ -348,125 +407,217 @@
             });
         }
 
-
         /* ===============================
-           ➕ AÑADIR PRODUCTO
+           AÑADIR PRODUCTO REAL
         =============================== */
-    addProductBtn.addEventListener('click', () => {
-        if (!selectedProduct) return;
+        addProductBtn.addEventListener('click', () => {
+            if (!selectedProduct) return;
 
-        const quantity = parseInt(quantityInput.value);
-        if (quantity <= 0) {
-            alert('Cantidad inválida');
-            return;
-        }
+            const quantity = parseInt(quantityInput.value);
+            if (quantity <= 0) {
+                alert('Cantidad inválida');
+                return;
+            }
 
-        const subtotal = quantity * selectedProduct.unitPrice;
+            const subtotal = quantity * selectedProduct.unitPrice;
 
-        const detail = {
-            productId: selectedProduct.id,
-            quantity,
-            unitPrice: selectedProduct.unitPrice,
-            subtotal
-        };
+            const detail = {
+                productId: selectedProduct.id,
+                productName: selectedProduct.productName,
+                quantity,
+                unitPrice: selectedProduct.unitPrice,
+                subtotal,
+                isTemporary: false
+            };
 
-        saleDetails.push(detail);
-        total += subtotal;
+            saleDetails.push(detail);
+            total += subtotal;
 
-        const rowIndex = saleDetails.length - 1;
+            const rowIndex = saleDetails.length - 1;
+            const row = document.createElement('tr');
+            row.setAttribute('data-index', rowIndex);
 
-        const row = document.createElement('tr');
-        row.setAttribute('data-index', rowIndex);
+            row.innerHTML = `
+                <td>${selectedProduct.barcode}</td>
+                <td>${selectedProduct.productName}</td>
+                <td class="text-center">
+                    <input type="number"
+                           class="form-control form-control-sm text-center quantity-input"
+                           min="1"
+                           value="${quantity}" />
+                </td>
+    <td class="text-end">${formatCOP(selectedProduct.unitPrice)}</td>
+    <td class="text-end subtotal-cell">${formatCOP(subtotal)}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-danger">
+                        ✕
+                    </button>
+                </td>
+            `;
 
-        row.innerHTML = `
-            <td>${selectedProduct.barcode}</td>
-            <td>${selectedProduct.productName}</td>
-            <td class="text-center">
-                <input type="number"
-                       class="form-control form-control-sm text-center quantity-input"
-                       min="1"
-                       value="${quantity}" />
-            </td>
-            <td class="text-end">$${selectedProduct.unitPrice}</td>
-            <td class="text-end subtotal-cell">$${subtotal}</td>
-            <td class="text-center">
-                <button class="btn btn-sm btn-danger">
-                    ✕
-                </button>
-            </td>
-        `;
+            const quantityInputRow = row.querySelector('.quantity-input');
+            quantityInputRow.addEventListener('blur', () => {
+                let newQty = parseInt(quantityInputRow.value);
+                if (isNaN(newQty) || newQty <= 0) {
+                    newQty = 1;
+                    quantityInputRow.value = 1;
+                }
 
-        const quantityInputRow = row.querySelector('.quantity-input');
+                const index = parseInt(row.getAttribute('data-index'));
+                const detail = saleDetails[index];
 
-        quantityInputRow.addEventListener('blur', () => {
+                total -= detail.subtotal;
+                detail.quantity = newQty;
+                detail.subtotal = newQty * detail.unitPrice;
 
-            let newQty = parseInt(quantityInputRow.value);
+               row.querySelector('.subtotal-cell').textContent = formatCOP(detail.subtotal);
 
-        if (isNaN(newQty) || newQty <= 0) {
-            newQty = 1;
-            quantityInputRow.value = 1;
-        }
+                total += detail.subtotal;
+                updateTotal();
+            });
 
+            row.querySelector('button').onclick = () => {
+                const index = parseInt(row.getAttribute('data-index'));
+                removeProduct(index, row);
+            };
 
-            const index = parseInt(row.getAttribute('data-index'));
-            const detail = saleDetails[index];
-
-            // Restar subtotal anterior
-            total -= detail.subtotal;
-
-            // Recalcular valores
-            detail.quantity = newQty;
-            detail.subtotal = newQty * detail.unitPrice;
-
-            // Actualizar subtotal visual
-            row.querySelector('.subtotal-cell').textContent = `$${detail.subtotal}`;
-
-            // Sumar nuevo subtotal
-            total += detail.subtotal;
-
+            saleTableBody.appendChild(row);
             updateTotal();
+            resetSelection();
         });
 
+        /* ===============================
+           AÑADIR PRODUCTO TEMPORAL
+        =============================== */
+        addTempProductBtn.addEventListener('click', () => {
+            const name = tempProductName.value.trim();
+            const price = parseFloat(tempUnitPrice.value);
+            const quantity = parseInt(tempQuantity.value);
 
-        row.querySelector('button').onclick = () => {
-            const index = parseInt(row.getAttribute('data-index'));
-            removeProduct(index, row);
-        };
+            if (!name) {
+                alert('El nombre del producto temporal es requerido');
+                return;
+            }
 
+            if (isNaN(price) || price <= 0) {
+                alert('Precio unitario inválido');
+                return;
+            }
 
-        saleTableBody.appendChild(row);
-        updateTotal();
-        resetSelection();
-    });
+            if (isNaN(quantity) || quantity <= 0) {
+                alert('Cantidad inválida');
+                return;
+            }
 
+            const subtotal = price * quantity;
+
+            const detail = {
+                productId: null,
+                productName: name,
+                quantity,
+                unitPrice: price,
+                subtotal,
+                isTemporary: true
+            };
+
+            saleDetails.push(detail);
+            total += subtotal;
+
+            const rowIndex = saleDetails.length - 1;
+            const row = document.createElement('tr');
+            row.setAttribute('data-index', rowIndex);
+
+            row.innerHTML = `
+                <td><em>TEMPORAL</em></td>
+                <td>${name}</td>
+                <td class="text-center">
+                    <input type="number"
+                           class="form-control form-control-sm text-center quantity-input"
+                           min="1"
+                           value="${quantity}" />
+                </td>
+      <td class="text-end">${formatCOP(price)}</td>
+    <td class="text-end subtotal-cell">${formatCOP(subtotal)}</td>
+
+                <td class="text-center">
+                    <button class="btn btn-sm btn-danger">
+                        ✕
+                    </button>
+                </td>
+            `;
+
+            const quantityInputRow = row.querySelector('.quantity-input');
+            quantityInputRow.addEventListener('blur', () => {
+                let newQty = parseInt(quantityInputRow.value);
+                if (isNaN(newQty) || newQty <= 0) {
+                    newQty = 1;
+                    quantityInputRow.value = 1;
+                }
+
+                const index = parseInt(row.getAttribute('data-index'));
+                const detail = saleDetails[index];
+
+                total -= detail.subtotal;
+                detail.quantity = newQty;
+                detail.subtotal = newQty * detail.unitPrice;
+
+                row.querySelector('.subtotal-cell').textContent = formatCOP(detail.subtotal);
+
+                total += detail.subtotal;
+                updateTotal();
+            });
+
+            row.querySelector('button').onclick = () => {
+                const index = parseInt(row.getAttribute('data-index'));
+                removeProduct(index, row);
+            };
+
+            saleTableBody.appendChild(row);
+            updateTotal();
+
+            // Cerrar modal y limpiar campos
+            const modal = bootstrap.Modal.getInstance(tempProductModal);
+            modal.hide();
+            tempProductName.value = '';
+            tempUnitPrice.value = '';
+            tempQuantity.value = '1';
+        });
 
         /* ===============================
            TOTAL
         =============================== */
         function updateTotal() {
-            totalAmount.textContent = `$${total}`;
+           totalAmount.textContent = formatCOP(total);
+
         }
 
         /* ===============================
-           🧹 LIMPIAR
+           LIMPIAR
         =============================== */
         clearBtn.addEventListener('click', () => {
             resetSelection();
         });
 
         /* ===============================
-           💾 REGISTRAR VENTA
+           REGISTRAR VENTA
         =============================== */
         saveSaleBtn.addEventListener('click', async () => {
-
             if (saleDetails.length === 0) {
                 alert('Agrega al menos un producto');
                 return;
             }
 
+            // Preparar DTO según el backend espera
             const dto = {
                 customerId: "9E667273-33D8-4F5D-83B7-CB76E3653926",
-                details: saleDetails
+                details: saleDetails.map(detail => ({
+                    productId: detail.isTemporary ? null : detail.productId,
+                    productName: detail.productName,
+                    quantity: detail.quantity,
+                    unitPrice: detail.unitPrice,
+                    subtotal: detail.subtotal,
+                    isTemporary: detail.isTemporary || false
+                }))
             };
 
             try {
@@ -476,7 +627,8 @@
                 });
 
                 if (!response.ok) {
-                    alert('Error al registrar la venta');
+                    const error = await response.json();
+                    alert(error.message || 'Error al registrar la venta');
                     return;
                 }
 
@@ -492,6 +644,13 @@
         /* ===============================
            UTILIDADES
         =============================== */
+    function formatCOP(value) {
+        return `$ ${Number(value).toLocaleString('es-CO', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        })}`;
+    }
+
         function clearResults() {
             results.innerHTML = '';
             results.style.display = 'none';
@@ -501,11 +660,11 @@
             selectedProduct = null;
             input.value = '';
             quantityInput.value = 1;
-            unitPriceLabel.textContent = '0';
+       unitPriceLabel.textContent = formatCOP(0);
+
             addProductBtn.disabled = true;
             clearResults();
         }
 
     })();
 </script>
-

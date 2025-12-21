@@ -1,6 +1,7 @@
 ﻿<!---------------------------------------------------------------------->
 <!--------------------------- AdminLayout ------------------------------>
 <!---------------------------------------------------------------------->
+
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Ventas";
@@ -11,7 +12,6 @@
 <!---------------------------------------------------------------------->
 
 <style>
-    /* Estilos para el modal de confirmación */
     #deactivateModal .modal-dialog {
         max-width: 400px;
     }
@@ -20,7 +20,6 @@
         padding: 2rem 1.5rem;
     }
 
-    /* Animación para alertas toast */
     .alert-toast {
         animation: slideInRight 0.3s ease-out, fadeOut 0.3s ease-out 2.7s forwards;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -49,7 +48,7 @@
     }
 
     .modal-edit-product {
-        max-width: 1100px; /* ~10% más que modal-lg */
+        max-width: 1100px; 
     }
 
     .pagination {
@@ -58,8 +57,8 @@
 
     .filter-pill {
         border-radius: 999px;
-        height: 42px; /* antes 48 */
-        font-size: 14px; /* antes 15 */
+        height: 42px; 
+        font-size: 14px; 
     }
 
     .filter-search {
@@ -87,7 +86,7 @@
 
     .products-card {
         max-width: 1400px;
-        margin: 1rem auto; /* antes 2rem */
+        margin: 1rem auto; 
         border-radius: 20px;
         background-color: #f8f9fa;
         box-shadow: 0 20px 40px rgba(0,0,0,.08);
@@ -96,11 +95,9 @@
 
 
     .filters-card {
-        background-color: #f6f8fa; /* más cercano al fondo */
+        background-color: #f6f8fa; 
         border: 1px solid #e5e8eb;
     }
-
-
 
     .form-control,
     .form-select {
@@ -162,7 +159,6 @@
         vertical-align: middle;
     }
 
-    }
 </style>
 
 <!-------------------------------------------------------------------->
@@ -288,7 +284,12 @@
     </div>
 </div>
 
+<!---------------------------------------------------------------------->
+<!----------------------------- Script --------------------------------->
+<!---------------------------------------------------------------------->
+
 <script>
+    (() => {
         /* ======================================================
            AUTH FETCH (JWT)
         ====================================================== */
@@ -304,168 +305,165 @@
                 }
             });
         };
+
         /* ======================================================
            ESTADO GLOBAL
         ====================================================== */
         let currentPage = 1;
         const recordsPerPage = 10;
 
-            /* ======================================================
-               OBTENER PRODUCTOS (API)
-            ====================================================== */
-
-    async function fetchSales(page = 1) {
-        currentPage = page;
-
-        const filterInput = document.getElementById("filterInput");
-        const year = document.getElementById("yearFilter").value;
-        const month = document.getElementById("monthFilter").value;
-
-        const tableBody = document.getElementById("productTableBody");
-        const paginationContainer = document.getElementById("paginationContainer");
-
-        const filter = encodeURIComponent(filterInput.value.trim());
-
-        // 🔹 Siempre limpiar
-        tableBody.innerHTML = "";
-        paginationContainer.innerHTML = "";
-
-        let startDate = "";
-        let endDate = "";
-
-        // 🔹 Construcción de fechas (opcional)
-        if (year) {
-            const start = new Date(year, month ? month - 1 : 0, 1);
-            const end = month
-                ? new Date(year, month, 1)
-                : new Date(Number(year) + 1, 0, 1);
-
-            startDate = start.toISOString();
-            endDate = end.toISOString();
+        /* ======================================================
+           FORMATEO DE MONEDA
+        ====================================================== */
+        function formatCOP(value) {
+            return `$ ${Number(value).toLocaleString('es-CO', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            })}`;
         }
 
-        // 🔹 URL base (siempre)
-        let url = `https://localhost:7172/api/sale/paginated?Filter=${filter}&Page=${page}&RecordsPerPage=${recordsPerPage}`;
+        /* ======================================================
+           OBTENER VENTAS (API)
+        ====================================================== */
+        async function fetchSales(page = 1) {
+            currentPage = page;
 
-        // 🔹 Fechas solo si existen
-        if (startDate && endDate) {
-            url += `&StartDate=${encodeURIComponent(startDate)}&EndDate=${encodeURIComponent(endDate)}`;
-        }
+            const filterInput = document.getElementById("filterInput");
+            const year = document.getElementById("yearFilter").value;
+            const month = document.getElementById("monthFilter").value;
 
-        try {
-            const response = await authFetch(url);
-            const data = await response.json();
+            const tableBody = document.getElementById("productTableBody");
+            const paginationContainer = document.getElementById("paginationContainer");
 
-            const sales = data?.result?.list;
+            const filter = encodeURIComponent(filterInput.value.trim());
 
-    if (sales && sales.length > 0) {
-        sales.forEach(s => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${s.saleNumber}</td>
-                <td>${s.saleDateOnly}</td>
-                <td>${s.saleTimeOnly}</td>
-                <td>${s.totalAmount}</td>
-                <td>${s.paymentStatus}</td>
-                <td>${s.saleType}</td>
-                <td>${s.userName}</td>
-                <td>${s.customerName}</td>
+            // Siempre limpiar
+            tableBody.innerHTML = "";
+            paginationContainer.innerHTML = "";
 
-            `;
-            tableBody.appendChild(row);
-        });
+            let startDate = "";
+            let endDate = "";
 
-        updatePagination(data.result.currentPage, data.result.totalPages);
-    } else {
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="7" class="text-center text-muted">
-                    No hay ventas para los filtros seleccionados.
-                </td>
-            </tr>`;
-    }
-        } catch (error) {
-            console.error("Error cargando ventas:", error);
-        }
-    }
+            if (year) {
+                const start = new Date(year, month ? month - 1 : 0, 1);
+                const end = month
+                    ? new Date(year, month, 1)
+                    : new Date(Number(year) + 1, 0, 1);
 
-
-
-            /* ======================================================
-               PAGINACIÓN
-            ====================================================== */
-            function updatePagination(current, total) {
-                const paginationContainer = document.getElementById("paginationContainer");
-                if (total <= 1) return;
-
-                const createItem = (text, page, disabled, active) => {
-                    const li = document.createElement("li");
-                    li.className = `page-item${disabled ? " disabled" : ""}${active ? " active" : ""}`;
-                    li.innerHTML = `<a class="page-link" href="#">${text}</a>`;
-                    li.onclick = e => {
-                        e.preventDefault();
-                        if (!disabled) fetchSales(page);
-                    };
-                    return li;
-                };
-
-                paginationContainer.appendChild(createItem("Anterior", current - 1, current === 1));
-                for (let i = 1; i <= total; i++)
-                    paginationContainer.appendChild(createItem(i, i, false, i === current));
-                paginationContainer.appendChild(createItem("Siguiente", current + 1, current === total));
-            
+                startDate = start.toISOString();
+                endDate = end.toISOString();
             }
-            /* ======================================================
-               Filtro por tiempo
-            ====================================================== */
-            function loadYears() {
-                const yearSelect = document.getElementById("yearFilter");
-                const currentYear = new Date().getFullYear();
 
-                for (let y = currentYear; y >= currentYear - 1; y--) {
-                    const option = document.createElement("option");
-                    option.value = y;
-                    option.textContent = y;
-                    yearSelect.appendChild(option);
+            let url = `/api/sale/paginated?Filter=${filter}&Page=${page}&RecordsPerPage=${recordsPerPage}`;
+
+            if (startDate && endDate) {
+                url += `&StartDate=${encodeURIComponent(startDate)}&EndDate=${encodeURIComponent(endDate)}`;
+            }
+
+            try {
+                const response = await authFetch(url);
+                const data = await response.json();
+
+                const sales = data?.result?.list;
+
+                if (sales && sales.length > 0) {
+                    sales.forEach(s => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${s.saleNumber}</td>
+                            <td>${s.saleDateOnly}</td>
+                            <td>${s.saleTimeOnly}</td>
+                            <td class="text-end">${formatCOP(s.totalAmount)}</td>
+                            <td>${s.paymentStatus}</td>
+                            <td>${s.saleType}</td>
+                            <td>${s.userName}</td>
+                            <td>${s.customerName}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+
+                    updatePagination(data.result.currentPage, data.result.totalPages);
+                } else {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">
+                                No hay ventas para los filtros seleccionados.
+                            </td>
+                        </tr>`;
                 }
+            } catch (error) {
+                console.error("Error cargando ventas:", error);
             }
+        }
 
-            /* ======================================================
-               CARGA INICIAL
-            ====================================================== */
-    document.addEventListener("DOMContentLoaded", () => {
+        /* ======================================================
+           PAGINACIÓN
+        ====================================================== */
+        function updatePagination(current, total) {
+            const paginationContainer = document.getElementById("paginationContainer");
+            if (total <= 1) return;
 
-        loadYears(); // carga los años en el select
+            const createItem = (text, page, disabled, active) => {
+                const li = document.createElement("li");
+                li.className = `page-item${disabled ? " disabled" : ""}${active ? " active" : ""}`;
+                li.innerHTML = `<a class="page-link" href="#">${text}</a>`;
+                li.onclick = e => {
+                    e.preventDefault();
+                    if (!disabled) fetchSales(page);
+                };
+                return li;
+            };
 
-        // 🔹 Deshabilitar mes hasta que se seleccione año
-        const yearFilter = document.getElementById("yearFilter");
-        const monthFilter = document.getElementById("monthFilter");
+            paginationContainer.appendChild(createItem("Anterior", current - 1, current === 1));
+            for (let i = 1; i <= total; i++)
+                paginationContainer.appendChild(createItem(i, i, false, i === current));
+            paginationContainer.appendChild(createItem("Siguiente", current + 1, current === total));
+        }
 
-        monthFilter.disabled = true; // inicialmente deshabilitado
+        /* ======================================================
+           FILTRO POR TIEMPO
+        ====================================================== */
+        function loadYears() {
+            const yearSelect = document.getElementById("yearFilter");
+            const currentYear = new Date().getFullYear();
 
-        yearFilter.addEventListener("change", e => {
-            monthFilter.disabled = !e.target.value;
-
-            // opcional: resetear mes cuando cambia el año
-            if (!e.target.value) {
-                monthFilter.value = "";
+            for (let y = currentYear; y >= currentYear - 1; y--) {
+                const option = document.createElement("option");
+                option.value = y;
+                option.textContent = y;
+                yearSelect.appendChild(option);
             }
-        });
+        }
 
-        // 🔹 Aplicar filtros
-        document.getElementById("applyFilters")
-            .addEventListener("click", () => fetchSales(1));
+        /* ======================================================
+           CARGA INICIAL
+        ====================================================== */
+        document.addEventListener("DOMContentLoaded", () => {
+            loadYears();
 
-        // 🔹 Búsqueda por texto con delay
-        let typingTimer;
-        document.getElementById("filterInput")
-            .addEventListener("input", () => {
-                clearTimeout(typingTimer);
-                typingTimer = setTimeout(() => fetchSales(1), 300);
+            const yearFilter = document.getElementById("yearFilter");
+            const monthFilter = document.getElementById("monthFilter");
+
+            monthFilter.disabled = true;
+
+            yearFilter.addEventListener("change", e => {
+                monthFilter.disabled = !e.target.value;
+                if (!e.target.value) monthFilter.value = "";
             });
 
-        // 🔹 Carga inicial
-        fetchSales();
-    });
+            document.getElementById("applyFilters")
+                .addEventListener("click", () => fetchSales(1));
 
+            let typingTimer;
+            document.getElementById("filterInput")
+                .addEventListener("input", () => {
+                    clearTimeout(typingTimer);
+                    typingTimer = setTimeout(() => fetchSales(1), 300);
+                });
+
+            // Carga inicial
+            fetchSales();
+        });
+
+    })();
 </script>
