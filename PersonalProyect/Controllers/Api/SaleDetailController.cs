@@ -15,5 +15,15 @@ namespace PersonalProyect.Controllers.Api
             _saleDetailService = saleDetailService;
         }
 
+        // 
+        [HttpGet("{saleId}/details")]
+        public async Task<IActionResult> GetSaleDetails(Guid saleId)
+        {
+            var response = await _saleDetailService
+                .GetSaleDetailsBySaleIdAsync(saleId);
+
+            return Ok(response);
+        }
+
     }
 }

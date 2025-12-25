@@ -5,13 +5,14 @@ using PersonalProyect.Core;
 using PersonalProyect.Core.Pagination;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
 using PersonalProyect.DTOs.Products;
 using PersonalProyect.Services.Abtractions;
 using PersonalProyect.Services.Implementations;
 using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using PersonalProyect.ViewModels.Products;
+using PersonalProyect.DTOs.Brands;
+using PersonalProyect.DTOs.Categories;
 
 
 public class AdminProductsController : Controller

@@ -1,4 +1,4 @@
-﻿namespace PersonalProyect.DTOs
+﻿namespace PersonalProyect.DTOs.Brands
 {
     public class BrandDTO
     {

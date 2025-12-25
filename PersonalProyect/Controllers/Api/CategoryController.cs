@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Categories;
 using PersonalProyect.Services.Abtractions;
 using PersonalProyect.Services.Implementations;
 

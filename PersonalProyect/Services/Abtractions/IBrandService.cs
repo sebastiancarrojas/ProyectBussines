@@ -1,5 +1,5 @@
 ﻿using PersonalProyect.Core;
-using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Brands;
 
 namespace PersonalProyect.Services.Abtractions
 {

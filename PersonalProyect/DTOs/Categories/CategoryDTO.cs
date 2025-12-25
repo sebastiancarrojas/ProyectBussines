@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PersonalProyect.DTOs
+namespace PersonalProyect.DTOs.Categories
 {
     public class CategoryDTO
     {

@@ -1,6 +1,7 @@
 ﻿using PersonalProyect.Core.Pagination;
 using PersonalProyect.DTOs.Products;
-using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Brands;
+using PersonalProyect.DTOs.Categories;
 
 namespace PersonalProyect.ViewModels.Products
 {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Core;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Brands;
 using PersonalProyect.Services.Abtractions;
 
 namespace PersonalProyect.Services.Implementations

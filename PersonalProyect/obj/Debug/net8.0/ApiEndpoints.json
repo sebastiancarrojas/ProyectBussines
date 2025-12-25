@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "PersonalProyect.DTOs.BrandCreateDTO",
+        "Type": "PersonalProyect.DTOs.Brands.BrandCreateDTO",
         "IsRequired": true
       }
     ],
@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "PersonalProyect.DTOs.CategoryCreateDTO",
+        "Type": "PersonalProyect.DTOs.Categories.CategoryCreateDTO",
         "IsRequired": true
       }
     ],
@@ -350,6 +350,22 @@
         "Name": "RecordsPerPage",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PersonalProyect.Controllers.Api.SaleDetailController",
+    "Method": "GetSaleDetails",
+    "RelativePath": "api/SaleDetail/{saleId}/details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saleId",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
 using static System.Net.WebRequestMethods;
 using PersonalProyect.Core;
+using PersonalProyect.DTOs.Brands;
 
 namespace PersonalProyect.Controllers
 {

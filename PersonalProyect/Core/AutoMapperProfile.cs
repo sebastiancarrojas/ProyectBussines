@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
+using PersonalProyect.DTOs.Brands;
+using PersonalProyect.DTOs.Categories;
 using PersonalProyect.DTOs.Products;
 
 namespace PersonalProyect.Core

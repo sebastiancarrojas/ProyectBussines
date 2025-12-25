@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Repositorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\adminsales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminsales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\adminproducts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminproducts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\dtos\\brands\\brandcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\dtos\\brands\\brandcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminProducts\\Index.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\AdminProducts\\Index.cshtml*",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminProducts\\Index.cshtml*",
-              "ViewState": "AgIAABADAAAAAAAAAAAAACgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-21T19:58:23.915Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminSales\\Register.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml*",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminSales\\Register.cshtml*",
-              "ViewState": "AgIAAJYCAAAAAAAAAAAAAOkBAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-21T19:48:59.848Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Index.cshtml",
-              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminSales\\Index.cshtml",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Index.cshtml*",
-              "RelativeToolTip": "PersonalProyect\\Views\\AdminSales\\Index.cshtml*",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAAACEBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-21T19:37:33.928Z",
+              "Title": "BrandCreateDTO.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs*",
+              "RelativeToolTip": "PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T23:08:10.921Z",
               "EditorCaption": ""
             }
           ]

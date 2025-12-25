@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PersonalProyect.Data;
 using PersonalProyect.Data.Entities;
-using PersonalProyect.DTOs;
 using System.Net.Http;
 using PersonalProyect.Core;
 using static System.Net.WebRequestMethods;
+using PersonalProyect.DTOs.Categories;
 
 namespace PersonalProyect.Controllers
 {
