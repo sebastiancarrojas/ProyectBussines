@@ -41,7 +41,7 @@ namespace PersonalProyect.Data
             modelBuilder.Entity<Sale>()
                 .Property(s => s.SaleNumber)
                 .HasDefaultValueSql("NEXT VALUE FOR SaleNumberSequence");
-            // ConfigureIndexes(builder);
+            ConfigureIndexes(modelBuilder);
             ConfigureKeys(modelBuilder);
             base.OnModelCreating(modelBuilder);
             // Aquí puedes configurar las entidades si es necesario
@@ -57,7 +57,12 @@ namespace PersonalProyect.Data
             modelBuilder.Entity<Permission>()
                 .HasIndex(p => p.Name)
                 .IsUnique();
+            modelBuilder.Entity<Customer>()
+                .HasIndex(c => new { c.DocumentType, c.DocumentNumber })
+                .IsUnique();
         }
+
+
 
         private void ConfigureKeys(ModelBuilder modelBuilder)
         {

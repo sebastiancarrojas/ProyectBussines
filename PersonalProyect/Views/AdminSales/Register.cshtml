@@ -107,6 +107,47 @@
             </div>
         </div>
 
+
+        <!-- ===================== BLOQUE CLIENTE (OPCIONAL) ===================== -->
+        <div class="card p-3 mb-3">
+            <h6 class="fw-semibold mb-3">Cliente</h6>
+
+            <div class="row g-3 align-items-end">
+                <!-- Documento -->
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold">Documento</label>
+                    <input type="text"
+                           id="customerDocument"
+                           class="form-control"
+                           placeholder="Número de documento" />
+                </div>
+
+                <!-- Nombre (solo lectura) -->
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold">Nombre</label>
+                    <input type="text"
+                           id="customerName"
+                           class="form-control"
+                           readonly
+                           placeholder="—" />
+                </div>
+
+                <!-- Acción -->
+                <div class="col-md-3 d-flex gap-2">
+                    <button type="button"
+                            class="btn btn-outline-main"
+                            id="createQuickCustomerBtn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#quickCustomerModal">
+                        Añadir cliente rápido
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+
+
         <!-- ===================== BLOQUE SUPERIOR (PRODUCTO) ===================== -->
         <div class="card p-3 mb-3">
             <div class="row g-3 align-items-end">
@@ -246,6 +287,39 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="quickCustomerModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear cliente rápido</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Tipo de documento</label>
+                    <select id="quickCustomerDocumentType" class="form-select">
+                        <option value="CC">Cédula de ciudadanía</option>
+                        <option value="CE">Cédula de extranjería</option>
+                        <option value="TI">Tarjeta de identidad</option>
+                        <option value="NIT">NIT</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Número de documento</label>
+                    <input type="text" id="quickCustomerDocument" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" id="quickCustomerFullName" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-main" id="addQuickCustomerBtn">Guardar cliente</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!---------------------------------------------------------------------->
 <!----------------------------- Script --------------------------------->
@@ -271,6 +345,93 @@
     (() => {
         const API_PRODUCT = '/api/Product';
         const API_SALE = '/api/Sale';
+
+    // ELEMENTOS DEL MODAL
+    const quickCustomerDocument = document.getElementById('quickCustomerDocument');
+    const quickCustomerFullName = document.getElementById('quickCustomerFullName');
+    const addQuickCustomerBtn = document.getElementById('addQuickCustomerBtn');
+    const quickCustomerDocumentType = document.getElementById('quickCustomerDocumentType');
+
+    addQuickCustomerBtn.addEventListener('click', async () => {
+        const docType = quickCustomerDocumentType.value;
+        const doc = quickCustomerDocument.value.trim();
+        const name = quickCustomerFullName.value.trim();
+
+        if (!docType || !doc || !name) {
+            alert('Completa todos los campos');
+            return;
+        }
+
+        try {
+            const response = await authFetch('/api/customer/quick', {
+                method: 'POST',
+                body: JSON.stringify({
+                    documentType: docType,
+                    documentNumber: doc,
+                    fullName: name
+                })
+            });
+
+            const data = await response.json();
+
+            if (!data.isSuccess) {
+                alert(data.message || 'Error al crear cliente');
+                return;
+            }
+
+            // Asignar cliente creado al formulario de ventas
+            selectedCustomerId = data.result; // id del cliente creado
+            customerDocumentInput.value = doc;
+            customerNameInput.value = name;
+
+            // Cerrar modal y limpiar campos
+            const modal = bootstrap.Modal.getInstance(document.getElementById('quickCustomerModal'));
+            modal.hide();
+            quickCustomerDocument.value = '';
+            quickCustomerFullName.value = '';
+            quickCustomerDocumentType.value = 'CC';
+
+        } catch (err) {
+            console.error(err);
+            alert('Error al crear cliente');
+        }
+    });
+
+    /* ======================================================
+       Customers
+    ====================================================== */
+    const customerDocumentInput = document.getElementById('customerDocument');
+    const customerNameInput = document.getElementById('customerName');
+    const createQuickCustomerBtn = document.getElementById('createQuickCustomerBtn');
+
+    let customerController = null;
+    let selectedCustomerId = null; // Aquí guardamos el GUID
+
+    customerDocumentInput.addEventListener('blur', async () => {
+        const term = customerDocumentInput.value.trim();
+
+        customerNameInput.value = '';
+        selectedCustomerId = null;
+        createQuickCustomerBtn.classList.add('d-none');
+
+        if (!term) return; // nada que buscar
+
+        try {
+            const response = await authFetch(`/api/customer/search?document=${encodeURIComponent(term)}`);
+
+            if (!response.ok) return;
+
+            const json = await response.json();
+            if (!json.isSuccess || !json.result?.length) return;
+
+            const customer = json.result[0];
+            customerNameInput.value = customer.fullName;
+            selectedCustomerId = customer.id;
+
+        } catch (err) {
+            console.error(err);
+        }
+    });
 
         /* ===============================
            ELEMENTOS DOM
@@ -609,7 +770,7 @@
 
             // Preparar DTO según el backend espera
             const dto = {
-                customerId: "9E667273-33D8-4F5D-83B7-CB76E3653926",
+                customerId: selectedCustomerId || null, 
                 details: saleDetails.map(detail => ({
                     productId: detail.isTemporary ? null : detail.productId,
                     productName: detail.productName,

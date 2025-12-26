@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Repositorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\dtos\\brands\\brandcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\dtos\\brands\\brandcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\views\\adminsales\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|c:\\repositorio\\personalproyect\\services\\implementations\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B457C6-6D57-465C-AA7D-9785B6B8F393}|PersonalProyect\\PersonalProyect.csproj|solutionrelative:personalproyect\\services\\implementations\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BrandCreateDTO.cs",
-              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs",
-              "RelativeDocumentMoniker": "PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs",
-              "ToolTip": "C:\\Repositorio\\PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs*",
-              "RelativeToolTip": "PersonalProyect\\DTOs\\Brands\\BrandCreateDTO.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CustomerService.cs",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\CustomerService.cs",
+              "RelativeDocumentMoniker": "PersonalProyect\\Services\\Implementations\\CustomerService.cs",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Services\\Implementations\\CustomerService.cs",
+              "RelativeToolTip": "PersonalProyect\\Services\\Implementations\\CustomerService.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAEAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T23:08:10.921Z",
+              "WhenOpened": "2025-12-26T06:35:49.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml",
+              "RelativeDocumentMoniker": "PersonalProyect\\Views\\AdminSales\\Register.cshtml",
+              "ToolTip": "C:\\Repositorio\\PersonalProyect\\Views\\AdminSales\\Register.cshtml",
+              "RelativeToolTip": "PersonalProyect\\Views\\AdminSales\\Register.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-26T06:28:33.706Z",
               "EditorCaption": ""
             }
           ]

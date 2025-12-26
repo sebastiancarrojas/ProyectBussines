@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PersonalProyect.DTOs;
 using PersonalProyect.Core;
+using PersonalProyect.DTOs.Customers;
 
 namespace PersonalProyect.Controllers
 {
@@ -18,7 +18,7 @@ namespace PersonalProyect.Controllers
         // Get List
         public async Task<IActionResult> Index()
         {
-            var response = await _http.GetFromJsonAsync<Response<List<CustomerDTO>>>("api/Customer");
+            var response = await _http.GetFromJsonAsync<Response<List<CreateCustomerDTO>>>("api/Customer");
             return View(response?.Result);
         }
 
@@ -30,7 +30,7 @@ namespace PersonalProyect.Controllers
         }
 
         // Edit
-        public async Task<IActionResult> Edit(Guid id, CustomerDTO dto)
+        public async Task<IActionResult> Edit(Guid id, CreateCustomerDTO dto)
         {
             var result = await _http.PutAsJsonAsync($"api/Customer/{id}", dto);
             if (!result.IsSuccessStatusCode)
@@ -41,7 +41,7 @@ namespace PersonalProyect.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var response = await _http.GetFromJsonAsync<Response<CustomerDTO>>($"api/Customer/{id}");
+            var response = await _http.GetFromJsonAsync<Response<CreateCustomerDTO>>($"api/Customer/{id}");
             if (response == null || response.Result == null)
                 return NotFound();
 
@@ -58,7 +58,7 @@ namespace PersonalProyect.Controllers
 
         // Create
         [HttpPost]
-        public async Task<IActionResult> Create(CustomerDTO dto)
+        public async Task<IActionResult> Create(CreateCustomerDTO dto)
         {
             if (!ModelState.IsValid)
                 return View(dto);

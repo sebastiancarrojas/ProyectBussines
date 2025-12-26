@@ -3,6 +3,7 @@ using PersonalProyect.Data.Entities;
 using PersonalProyect.DTOs;
 using PersonalProyect.DTOs.Brands;
 using PersonalProyect.DTOs.Categories;
+using PersonalProyect.DTOs.Customers;
 using PersonalProyect.DTOs.Products;
 
 namespace PersonalProyect.Core
@@ -32,7 +33,7 @@ namespace PersonalProyect.Core
             // -------------------
             // Otros mapeos
             // -------------------
-            CreateMap<CustomerDTO, Customer>().ReverseMap();
+            CreateMap<CreateCustomerDTO, Customer>().ReverseMap();
             CreateMap<User, AccountUserDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
             CreateMap<Permission, PermissionDTO>();

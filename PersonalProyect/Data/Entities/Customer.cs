@@ -1,4 +1,5 @@
 ﻿using PersonalProyect.Data.Abstractions;
+using PersonalProyect.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace PersonalProyect.Data.Entities
@@ -7,18 +8,13 @@ namespace PersonalProyect.Data.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [MaxLength(100)]
         public string? FullName { get; set; }
-        [MaxLength(50)]
-        public string? NickName { get; set; }
-        [MaxLength(10)]
         public string? PhoneNumber { get; set; }
-        [MaxLength(100)]
-        public string? Address { get; set; }
-        [Required]
+        public string? Email { get; set; }
         public DateTime RegistrationDate { get; set; }
-        [MaxLength(150)]
-        public string Email { get; set; } = string.Empty;
+        public bool IsActived { get; set; }
+        public DocumentType? DocumentType { get; set; }
+        public string? DocumentNumber { get; set; }
 
         // Relationships
 

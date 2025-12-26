@@ -87,7 +87,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "PersonalProyect.DTOs.CustomerDTO",
+        "Type": "PersonalProyect.DTOs.Customers.CreateCustomerDTO",
         "IsRequired": true
       }
     ],
@@ -124,7 +124,7 @@
       },
       {
         "Name": "dto",
-        "Type": "PersonalProyect.DTOs.CustomerDTO",
+        "Type": "PersonalProyect.DTOs.Customers.CreateCustomerDTO",
         "IsRequired": true
       }
     ],
@@ -142,6 +142,38 @@
         "Name": "id",
         "Type": "System.Guid",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PersonalProyect.Controllers.Api.CustomerController",
+    "Method": "CreateQuickCustomer",
+    "RelativePath": "api/Customer/quick",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "PersonalProyect.DTOs.Customers.QuickCreateCustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PersonalProyect.Controllers.Api.CustomerController",
+    "Method": "SearchByDocument",
+    "RelativePath": "api/Customer/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "document",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

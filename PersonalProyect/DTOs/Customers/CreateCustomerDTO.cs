@@ -1,9 +1,9 @@
 ﻿using PersonalProyect.Data.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace PersonalProyect.DTOs
+namespace PersonalProyect.DTOs.Customers
 {
-    public class CustomerDTO
+    public class CreateCustomerDTO
     {
         [Key]
         public Guid Id { get; set; }
